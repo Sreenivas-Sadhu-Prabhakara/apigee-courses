@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0e1a">
+  <meta name="description" content="Apigee X training hub — hands-on courses for API development on Apigee X, from Open Banking / FAPI to Spring Boot and AI gateways.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <title>Apigee Training — course hub</title>
+  <style>
+    .hub { max-width: 1040px; margin: 0 auto; padding: 72px 28px 96px; }
+    .hub-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 56px; }
+    .hub-brand .mark { width: 40px; height: 40px; color: var(--gold); }
+    .hub-brand .name { font-family: var(--f-head); font-weight: 700; font-size: 1.25rem; letter-spacing: .2px; }
+    .hub-brand .name span { color: var(--muted); font-weight: 500; }
+    .hub-hero { margin-bottom: 52px; }
+    .hub-hero .eyebrow { color: var(--teal); font-family: var(--f-mono); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 14px; }
+    .hub-hero h1 { font-family: var(--f-head); font-size: 2.6rem; line-height: 1.08; margin: 0 0 18px; }
+    .hub-hero p { color: var(--muted); font-size: 1.12rem; max-width: 700px; margin: 0; }
+    .section-label { font-family: var(--f-mono); font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin: 0 0 18px; }
+    .doc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 20px; }
+    .doc-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 26px 26px 24px; transition: border-color .15s, transform .15s, background .15s; }
+    .doc-card:hover { border-color: var(--gold-line); transform: translateY(-2px); background: var(--panel-2); }
+    .doc-card .tag { align-self: flex-start; font-family: var(--f-mono); font-size: .72rem; letter-spacing: .06em; color: var(--gold); background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: 99px; padding: 2px 10px; margin-bottom: 14px; }
+    .doc-card h3 { font-family: var(--f-head); font-size: 1.18rem; line-height: 1.25; margin: 0 0 8px; }
+    .doc-card p { color: var(--muted); font-size: .94rem; margin: 0 0 16px; }
+    .doc-card ul { margin: 0 0 18px; padding-left: 18px; color: var(--faint); font-size: .85rem; }
+    .doc-card ul li { margin: 2px 0; }
+    .doc-card .go { margin-top: auto; font-family: var(--f-mono); font-size: .85rem; color: var(--teal); }
+    .hub-note { margin-top: 40px; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: var(--r); color: var(--muted); font-size: .9rem; }
+    .hub-foot { margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--faint); font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .hub-foot a { color: var(--teal); text-decoration: none; }
+    @media (max-width: 560px) { .hub-hero h1 { font-size: 2.1rem; } }
+  </style>
+</head>
+<body>
+  <div class="hub">
+    <div class="hub-brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2.25" y="2.25" width="33.5" height="33.5" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.55"/>
+          <path d="M9 13.5h20M9 24.5h20" stroke="currentColor" stroke-width="1" opacity="0.28"/>
+          <path d="M19 6.5v25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="19" cy="19" r="4" fill="#0b0e1a" stroke="#46c2b0" stroke-width="2"/>
+        </svg>
+      </span>
+      <span class="name">Apigee&nbsp;Training <span>· course hub</span></span>
+    </div>
+
+    <header class="hub-hero">
+      <p class="eyebrow">Apigee X · Training</p>
+      <h1>Apigee&nbsp;X training courses</h1>
+      <p>Hands-on, self-paced courses for building production APIs on Apigee&nbsp;X — from
+      UK Open Banking / FAPI to bridging Apigee with Spring Boot and governing AI traffic at
+      the edge. Reference documentation lives separately in the docs hub.</p>
+    </header>
+
+    <p class="section-label">Courses</p>
+    <div class="doc-grid">
+      <a class="doc-card" href="fapi-30-day/index.html">
+        <span class="tag">30 days</span>
+        <h3>Apigee X — 30-Day Training</h3>
+        <p>API proxy development for banking and UK Open Banking (FAPI), one focused day at a time.</p>
+        <ul>
+          <li>Proxies, flows &amp; policies from first principles</li>
+          <li>OAuth2, JWT/JWS, threat protection, traffic</li>
+          <li>Open Banking / FAPI security, end to end</li>
+          <li>30 daily lessons with worked examples</li>
+        </ul>
+        <span class="go">Open course →</span>
+      </a>
+
+      <a class="doc-card" href="spring-boot-devs/index.html">
+        <span class="tag">33 sessions</span>
+        <h3>Apigee X for Spring Boot Developers</h3>
+        <p>Learn Apigee&nbsp;X by bridging every concept to Spring — through UK Open Banking and FAPI.</p>
+        <ul>
+          <li>Every Apigee idea mapped to a Spring equivalent</li>
+          <li>Gateways, filters, security, resilience</li>
+          <li>Open Banking / FAPI as the running example</li>
+          <li>33 sessions for JVM developers</li>
+        </ul>
+        <span class="go">Open course →</span>
+      </a>
+
+      <a class="doc-card" href="tetrate-ai-gateway/index.html">
+        <span class="tag">29 sessions</span>
+        <h3>Tetrate / Envoy AI Gateway for Apigee &amp; Java Developers</h3>
+        <p>Govern LLMs and AI agents at the edge — every concept anchored to Apigee and Spring&nbsp;Boot.</p>
+        <ul>
+          <li>AI gateway patterns on Envoy / Tetrate</li>
+          <li>Token, cost &amp; safety controls for LLM traffic</li>
+          <li>Anchored to familiar Apigee + Spring concepts</li>
+          <li>29 sessions for API &amp; JVM developers</li>
+        </ul>
+        <span class="go">Open course →</span>
+      </a>
+
+      <a class="doc-card" href="mastery/index.html">
+        <span class="tag">Program</span>
+        <h3>Apigee X Mastery Program</h3>
+        <p>A structured mastery track — foundations through patterns, policies and assessment.</p>
+        <ul>
+          <li>Foundations &amp; full curriculum</li>
+          <li>Hands-on labs and worked patterns</li>
+          <li>Policy reference &amp; design patterns</li>
+          <li>Assessments &amp; further resources</li>
+        </ul>
+        <span class="go">Open course →</span>
+      </a>
+    </div>
+
+    <div class="hub-note">
+      <strong>Scope.</strong> This repository is for hands-on Apigee&nbsp;X <em>training courses</em>.
+      Reference documentation is kept separately in its own docs hub.
+    </div>
+
+    <div class="hub-foot">
+      <span>Apigee&nbsp;X training courses</span>
+      <span>Open Banking · FAPI · Spring Boot · AI gateways</span>
+    </div>
+  </div>
+</body>
+</html>

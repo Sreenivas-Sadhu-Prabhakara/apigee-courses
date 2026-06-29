@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Security Patterns | Apigee Mastery</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">A</span><span><strong>Apigee Mastery</strong><small>3-week hands-on program</small></span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="curriculum.html">21-Day Flow</a>
+        <a href="foundations.html">Foundations</a>
+        <a href="labs.html">Lab Kit</a>
+        <a href="policies.html">Policies</a>
+        <a class="active" href="patterns.html">Security Patterns</a>
+        <a href="assessments.html">Assessments</a>
+        <a href="resources.html">Sources</a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <p class="eyebrow">High, medium, and low security</p>
+        <h1>Pattern library for real API portfolios</h1>
+        <p>The goal is not one universal security stack. Learners practice choosing proportional controls, proving the decision, and knowing when a lower tier is no longer acceptable.</p>
+      </section>
+
+      <section class="pattern-grid">
+        <article class="pattern high-card">
+          <span class="tag high">High</span>
+          <h2>Open banking style financial API</h2>
+          <p>For account, payment, consent, regulated data, and high-risk partner APIs where replay, token theft, repudiation, and regulatory audit matter.</p>
+          <ul>
+            <li>OAuth 2.0 authorization code with PKCE; FAPI 2.0 concepts.</li>
+            <li>PAR and signed request/response patterns where ecosystem requires them.</li>
+            <li>Sender-constrained tokens through mTLS or DPoP design choice.</li>
+            <li>Consent binding, account/resource authorization, idempotency, and tamper-evident audit.</li>
+          </ul>
+        </article>
+        <article class="pattern medium-card">
+          <span class="tag medium">Medium</span>
+          <h2>External partner API</h2>
+          <p>For B2B APIs where the partner is known, data is important, and controls should prevent abuse without full open banking ceremony.</p>
+          <ul>
+            <li>Client credentials, external JWT, or opaque token introspection.</li>
+            <li>API products, scopes, quotas, spike arrest, and partner-specific analytics.</li>
+            <li>Schema validation, threat protection, and clear error contracts.</li>
+            <li>Certificate pinning or mTLS when partner connectivity justifies it.</li>
+          </ul>
+        </article>
+        <article class="pattern low-card">
+          <span class="tag low">Low</span>
+          <h2>Internal or public low-risk API</h2>
+          <p>For read-only, non-sensitive, low-blast-radius APIs where speed and simplicity matter, but gateway hygiene still matters.</p>
+          <ul>
+            <li>API key or network-level trust plus basic quota.</li>
+            <li>CORS, payload size limits, cache strategy, and friendly errors.</li>
+            <li>Minimal identity propagation and no sensitive data logging.</li>
+            <li>Clear promotion path to medium if data sensitivity changes.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="visual-band">
+        <div>
+          <p class="eyebrow">Decision matrix</p>
+          <h2>Security tier selector</h2>
+          <p>Use this matrix during architecture reviews. If any column lands in high, the design must document why high controls are not being used.</p>
+        </div>
+        <div class="risk-matrix">
+          <div class="risk-head">Signal</div><div>Low</div><div>Medium</div><div>High</div>
+          <div>Data sensitivity</div><span>Public metadata</span><span>Business confidential</span><span>Financial, personal, regulated</span>
+          <div>Caller type</div><span>Internal app</span><span>Known partner</span><span>Third-party provider ecosystem</span>
+          <div>Abuse impact</div><span>Minor cost</span><span>Operational or brand impact</span><span>Fraud, legal, customer harm</span>
+          <div>Token theft risk</div><span>Low-value token</span><span>Scoped bearer token</span><span>Sender-constrained token required</span>
+          <div>Audit burden</div><span>Best effort</span><span>Partner traceability</span><span>Regulatory evidence</span>
+        </div>
+      </section>
+
+      <section class="code-section">
+        <h2>High-security shared flow skeleton</h2>
+        <pre class="copyable"><code>&lt;SharedFlow name="SF-High-Security-Gate"&gt;
+  &lt;Step&gt;&lt;Name&gt;JTP-Request-Shape&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;JWT-Verify-Partner-Token&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;JS-Validate-FAPI-Context&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;Q-Product-Daily-Limit&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;SA-Burst-Protection&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;AM-Set-Audit-Headers&lt;/Name&gt;&lt;/Step&gt;
+&lt;/SharedFlow&gt;</code></pre>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>FAPI-style context validation</h2>
+          <pre class="copyable"><code>var requiredClaims = ["iss", "sub", "aud", "exp", "iat", "scope", "client_id"];
+var missing = requiredClaims.filter(function (claim) {
+  return !context.getVariable("jwt.JWT-Verify-Partner-Token.claim." + claim);
+});
+
+var scopes = String(context.getVariable("jwt.JWT-Verify-Partner-Token.claim.scope") || "");
+var hasAccountsRead = scopes.split(" ").indexOf("accounts:read") !== -1;
+var consentId = context.getVariable("request.header.x-consent-id");
+
+if (missing.length || !hasAccountsRead || !consentId) {
+  context.setVariable("security.failure.reason", missing.join(",") || "scope_or_consent");
+  throw new Error("High-security context validation failed");
+}</code></pre>
+        </div>
+        <div>
+          <h2>Medium-security shared flow skeleton</h2>
+          <pre class="copyable"><code>&lt;SharedFlow name="SF-Partner-Gate"&gt;
+  &lt;Step&gt;&lt;Name&gt;JTP-Request-Shape&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;OA-Verify-Access-Token&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;Q-Partner-Monthly-Limit&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;SA-Partner-Burst&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;AM-Partner-Headers&lt;/Name&gt;&lt;/Step&gt;
+&lt;/SharedFlow&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>Low-security shared flow skeleton</h2>
+          <pre class="copyable"><code>&lt;SharedFlow name="SF-Low-Risk-Gate"&gt;
+  &lt;Step&gt;&lt;Name&gt;VAK-Verify-Client&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;SA-Basic-Burst&lt;/Name&gt;&lt;/Step&gt;
+  &lt;Step&gt;&lt;Name&gt;AM-CORS-Headers&lt;/Name&gt;&lt;/Step&gt;
+&lt;/SharedFlow&gt;</code></pre>
+        </div>
+        <div>
+          <h2>Error contract</h2>
+          <pre class="copyable"><code>{
+  "error": "access_denied",
+  "message": "The request failed policy validation.",
+  "correlationId": "{request.header.x-correlation-id}",
+  "timestamp": "{system.timestamp}"
+}</code></pre>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>Apigee Mastery Program</span><span>Security patterns</span></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

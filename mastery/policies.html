@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Policy Cookbook | Apigee Mastery</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">A</span><span><strong>Apigee Mastery</strong><small>3-week hands-on program</small></span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="curriculum.html">21-Day Flow</a>
+        <a href="foundations.html">Foundations</a>
+        <a href="labs.html">Lab Kit</a>
+        <a class="active" href="policies.html">Policies</a>
+        <a href="patterns.html">Security Patterns</a>
+        <a href="assessments.html">Assessments</a>
+        <a href="resources.html">Sources</a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <p class="eyebrow">Policy explanation and recipes</p>
+        <h1>Apigee policy cookbook</h1>
+        <p>Each recipe includes the teaching point, when to use it, and starter XML. Labs combine these into reusable shared flows and security tiers.</p>
+      </section>
+
+      <section id="policyMatrix" class="matrix"></section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>Verify API key</h2>
+          <p>Use for low-risk APIs, internal prototypes, portal onboarding, or as an additional app identity signal.</p>
+          <pre class="copyable"><code>&lt;VerifyAPIKey name="VAK-Verify-Client"&gt;
+  &lt;APIKey ref="request.header.x-api-key"/&gt;
+&lt;/VerifyAPIKey&gt;</code></pre>
+        </div>
+        <div>
+          <h2>OAuth access token</h2>
+          <p>Use where Apigee issues or validates Apigee-managed OAuth tokens and you need scopes, product, app, developer, and quota context.</p>
+          <pre class="copyable"><code>&lt;OAuthV2 name="OA-Verify-Access-Token"&gt;
+  &lt;Operation&gt;VerifyAccessToken&lt;/Operation&gt;
+  &lt;AccessTokenPrefix&gt;Bearer&lt;/AccessTokenPrefix&gt;
+  &lt;Scope&gt;accounts:read&lt;/Scope&gt;
+&lt;/OAuthV2&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>Verify external JWT</h2>
+          <p>Use for tokens issued by an external identity provider. Keep issuer, audience, allowed algorithms, and JWKS location explicit.</p>
+          <pre class="copyable"><code>&lt;VerifyJWT name="JWT-Verify-Partner-Token"&gt;
+  &lt;Algorithm&gt;RS256&lt;/Algorithm&gt;
+  &lt;Source&gt;request.header.authorization&lt;/Source&gt;
+  &lt;PublicKey&gt;
+    &lt;JWKS uri="https://idp.example.com/.well-known/jwks.json"/&gt;
+  &lt;/PublicKey&gt;
+  &lt;Issuer&gt;https://idp.example.com&lt;/Issuer&gt;
+  &lt;Audience&gt;api://banking-accounts&lt;/Audience&gt;
+  &lt;Subject ref="jwt.JWT-Verify-Partner-Token.claim.sub"/&gt;
+&lt;/VerifyJWT&gt;</code></pre>
+        </div>
+        <div>
+          <h2>Spike arrest</h2>
+          <p>Use for smoothing bursts. Do not use it as the only source of accurate business entitlement counting.</p>
+          <pre class="copyable"><code>&lt;SpikeArrest name="SA-Burst-Protection"&gt;
+  &lt;Identifier ref="client_id"/&gt;
+  &lt;Rate&gt;30ps&lt;/Rate&gt;
+  &lt;UseEffectiveCount&gt;true&lt;/UseEffectiveCount&gt;
+&lt;/SpikeArrest&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>Quota</h2>
+          <p>Use for product entitlements, partner contracts, and API plan enforcement.</p>
+          <pre class="copyable"><code>&lt;Quota name="Q-Product-Daily-Limit"&gt;
+  &lt;Identifier ref="client_id"/&gt;
+  &lt;Allow count="10000"/&gt;
+  &lt;Interval&gt;1&lt;/Interval&gt;
+  &lt;TimeUnit&gt;day&lt;/TimeUnit&gt;
+  &lt;Distributed&gt;true&lt;/Distributed&gt;
+  &lt;Synchronous&gt;true&lt;/Synchronous&gt;
+&lt;/Quota&gt;</code></pre>
+        </div>
+        <div>
+          <h2>JSON threat protection</h2>
+          <p>Use to constrain structural abuse before the payload reaches application code.</p>
+          <pre class="copyable"><code>&lt;JSONThreatProtection name="JTP-Request-Shape"&gt;
+  &lt;ArrayElementCount&gt;100&lt;/ArrayElementCount&gt;
+  &lt;ContainerDepth&gt;8&lt;/ContainerDepth&gt;
+  &lt;ObjectEntryCount&gt;60&lt;/ObjectEntryCount&gt;
+  &lt;ObjectEntryNameLength&gt;64&lt;/ObjectEntryNameLength&gt;
+  &lt;StringValueLength&gt;4096&lt;/StringValueLength&gt;
+&lt;/JSONThreatProtection&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>Assign message</h2>
+          <p>Use for clean request shaping: correlation IDs, canonical headers, and backend-specific details hidden from clients.</p>
+          <pre class="copyable"><code>&lt;AssignMessage name="AM-Set-Request-Headers"&gt;
+  &lt;AssignTo createNew="false" transport="http" type="request"/&gt;
+  &lt;Set&gt;
+    &lt;Headers&gt;
+      &lt;Header name="x-correlation-id"&gt;{request.header.x-correlation-id}&lt;/Header&gt;
+      &lt;Header name="x-apigee-proxy"&gt;banking-accounts-v1&lt;/Header&gt;
+    &lt;/Headers&gt;
+  &lt;/Set&gt;
+  &lt;IgnoreUnresolvedVariables&gt;true&lt;/IgnoreUnresolvedVariables&gt;
+&lt;/AssignMessage&gt;</code></pre>
+        </div>
+        <div>
+          <h2>Raise fault</h2>
+          <p>Use for standardized fail-closed responses and for removing accidental backend leakage.</p>
+          <pre class="copyable"><code>&lt;RaiseFault name="RF-Invalid-Consent"&gt;
+  &lt;FaultResponse&gt;
+    &lt;Set&gt;
+      &lt;StatusCode&gt;403&lt;/StatusCode&gt;
+      &lt;ReasonPhrase&gt;Forbidden&lt;/ReasonPhrase&gt;
+      &lt;Payload contentType="application/json"&gt;
+        {"error":"consent_required","message":"Valid consent context is required."}
+      &lt;/Payload&gt;
+    &lt;/Set&gt;
+  &lt;/FaultResponse&gt;
+&lt;/RaiseFault&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="content-panel">
+        <h2>Policy choreography rule of thumb</h2>
+        <ol class="numbered">
+          <li>Reject structurally unsafe traffic before expensive work.</li>
+          <li>Authenticate the caller before using identity-dependent counters.</li>
+          <li>Authorize scopes, resources, and consent before routing.</li>
+          <li>Normalize headers and payloads only after the request is trusted enough to process.</li>
+          <li>Log decisions, not secrets.</li>
+        </ol>
+      </section>
+    </main>
+    <footer class="footer"><span>Apigee Mastery Program</span><span>Policy cookbook</span></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Foundations | Apigee Mastery</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">A</span><span><strong>Apigee Mastery</strong><small>3-week hands-on program</small></span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="curriculum.html">21-Day Flow</a>
+        <a class="active" href="foundations.html">Foundations</a>
+        <a href="labs.html">Lab Kit</a>
+        <a href="policies.html">Policies</a>
+        <a href="patterns.html">Security Patterns</a>
+        <a href="assessments.html">Assessments</a>
+        <a href="resources.html">Sources</a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <p class="eyebrow">Architecture and protocol grounding</p>
+        <h1>Why Apigee architecture works</h1>
+        <p>This page gives learners the mental model underneath the labs: three-tier API architecture, REST as an architectural style, and the RFCs that define the Web protocol surface most Apigee proxies manage.</p>
+      </section>
+
+      <section class="visual-band">
+        <div>
+          <p class="eyebrow">Three-tier architecture</p>
+          <h2>Separate experience, policy, and implementation.</h2>
+          <p>Apigee belongs in the API management tier. It should protect and mediate the contract, but it should not become the system of record, authorization server, consent database, or business transaction engine.</p>
+        </div>
+        <div class="tier-diagram large" role="img" aria-label="Three tier architecture diagram">
+          <article>
+            <strong>1</strong>
+            <span>Experience tier</span>
+            <p>Mobile, web, partner, B2B, internal tools, portal apps, and API consumers.</p>
+          </article>
+          <article>
+            <strong>2</strong>
+            <span>API management tier</span>
+            <p>Apigee X proxies, products, policies, shared flows, analytics, threat protection, mediation, and routing.</p>
+          </article>
+          <article>
+            <strong>3</strong>
+            <span>Service and data tier</span>
+            <p>Domain services, legacy systems, Cloud Run, GKE, databases, consent store, identity provider, logs, and monitoring.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-grid">
+        <div>
+          <p class="eyebrow">REST and RFC clarity</p>
+          <h2>Teach REST precisely.</h2>
+          <p>REST is not itself an RFC. REST is Roy Fielding's architectural style for network-based software architectures. The protocols and identifiers used by RESTful HTTP APIs are standardized in RFCs such as HTTP Semantics and URI Generic Syntax.</p>
+        </div>
+        <div class="stack-list">
+          <article class="card">
+            <h3>Fielding dissertation</h3>
+            <p><strong>Architectural Styles and the Design of Network-based Software Architectures</strong> introduced REST as constraints for scalable, independently deployable, intermediary-friendly distributed hypermedia systems.</p>
+          </article>
+          <article class="card">
+            <h3>RFC 9110: HTTP Semantics</h3>
+            <p>Defines the architecture, terminology, methods, status codes, headers, representations, caching hooks, and the http/https URI schemes shared across HTTP versions.</p>
+          </article>
+          <article class="card">
+            <h3>RFC 3986: URI Generic Syntax</h3>
+            <p>Defines the generic syntax for identifiers, including scheme, authority, path, query, fragment, percent encoding, hierarchy, and security considerations.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="visual-band">
+        <div>
+          <p class="eyebrow">REST constraints</p>
+          <h2>What learners should see in every proxy</h2>
+          <p>The gateway is an intermediary in a layered system. A good Apigee proxy preserves REST constraints where possible and documents deliberate deviations.</p>
+        </div>
+        <div class="constraint-wheel" role="img" aria-label="REST constraints for API design">
+          <span>Client-server</span>
+          <span>Stateless</span>
+          <span>Cacheable</span>
+          <span>Uniform interface</span>
+          <span>Layered system</span>
+          <span>Code on demand optional</span>
+          <b>REST</b>
+        </div>
+      </section>
+
+      <section class="content-panel">
+        <h2>Network-based protocol teaching map</h2>
+        <div class="protocol-map">
+          <article><strong>Identifier</strong><span>URI path and query design</span><p>Use RFC 3986 to teach stable resource identifiers, path hierarchy, query meaning, and why secrets never belong in URLs.</p></article>
+          <article><strong>Method</strong><span>HTTP method semantics</span><p>Use RFC 9110 to teach GET safety, PUT idempotency, POST processing, DELETE semantics, and status code discipline.</p></article>
+          <article><strong>Representation</strong><span>JSON and media types</span><p>Teach contract stability, content negotiation, schema validation, and response shaping through Apigee mediation.</p></article>
+          <article><strong>Intermediary</strong><span>Apigee policies</span><p>Teach that Apigee adds security, routing, analytics, transformation, and caching while preserving client/backend independence.</p></article>
+        </div>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>RESTful resource checklist</h2>
+          <pre class="copyable"><code># Resource design review
+- Resource names are nouns, not actions.
+- Paths identify stable resources.
+- HTTP methods carry action semantics.
+- GET does not mutate server state.
+- PUT and DELETE behavior is idempotent where used.
+- POST is used for processing or subordinate resource creation.
+- Status codes match the outcome.
+- Error payloads are consistent.
+- Sensitive values are not placed in URI query strings.
+- Cache behavior is explicit.</code></pre>
+        </div>
+        <div>
+          <h2>Apigee placement checklist</h2>
+          <pre class="copyable"><code># What belongs in Apigee
+- Authentication and token validation
+- Product, app, scope, and quota enforcement
+- Burst protection and threat protection
+- Header and payload mediation
+- Routing and target abstraction
+- Correlation IDs, analytics, logging hooks
+
+# What usually belongs elsewhere
+- User login and consent capture
+- Core business authorization decisions
+- Ledger updates and system-of-record writes
+- Fraud scoring models
+- Long-running orchestration state</code></pre>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>Apigee Mastery Program</span><span>Architecture and protocol foundations</span></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

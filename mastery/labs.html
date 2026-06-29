@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab Kit | Apigee Mastery</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">A</span><span><strong>Apigee Mastery</strong><small>3-week hands-on program</small></span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="curriculum.html">21-Day Flow</a>
+        <a href="foundations.html">Foundations</a>
+        <a class="active" href="labs.html">Lab Kit</a>
+        <a href="policies.html">Policies</a>
+        <a href="patterns.html">Security Patterns</a>
+        <a href="assessments.html">Assessments</a>
+        <a href="resources.html">Sources</a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <p class="eyebrow">Ready hands-on code</p>
+        <h1>Installation and lab scaffold</h1>
+        <p>Use these snippets as starter assets for an Apigee X or hybrid learning environment. Replace placeholders before executing against a real organization.</p>
+      </section>
+
+      <section class="section-grid">
+        <div>
+          <h2>Environment prerequisites</h2>
+          <p>The labs include a complete Apigee X setup day. By the end of that day every learner team should have a verified Google Cloud project, Apigee organization, environment, environment group, hostname, deploy permission, and shell profile.</p>
+        </div>
+        <div class="stack-list compact">
+          <article class="card"><strong>Required</strong><p>Apigee org, env, env group, deployed runtime, API proxy deploy permission.</p></article>
+          <article class="card"><strong>Recommended</strong><p>Shared learner project, Cloud Logging sink, service account per team, CI runner.</p></article>
+          <article class="card"><strong>Optional</strong><p>Private CA, mock OIDC provider, JWKS endpoint, and developer portal sandbox.</p></article>
+        </div>
+      </section>
+
+      <section class="visual-band">
+        <div>
+          <p class="eyebrow">Apigee X setup day</p>
+          <h2>Provision once, verify many times.</h2>
+          <p>Use the Google Cloud console path for beginners and the command-line path for advanced teams. The point of the day is not speed; it is understanding what each platform component does.</p>
+        </div>
+        <div class="setup-flow" role="img" aria-label="Apigee X setup flow">
+          <article><span>1</span><strong>Project</strong><p>Billing, APIs, region, IAM, and learner service accounts.</p></article>
+          <article><span>2</span><strong>Org</strong><p>Apigee X evaluation or paid organization provisioning path.</p></article>
+          <article><span>3</span><strong>Runtime</strong><p>Environment, environment group, hostname, instance, and attachment.</p></article>
+          <article><span>4</span><strong>Access</strong><p>DNS/TLS path, deploy roles, token access, and test client.</p></article>
+          <article><span>5</span><strong>Evidence</strong><p>Verification commands, screenshots, and setup decision record.</p></article>
+        </div>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>Apigee X setup verification</h2>
+          <pre class="copyable"><code>gcloud auth login
+gcloud config set project "$PROJECT_ID"
+gcloud services enable apigee.googleapis.com compute.googleapis.com \
+  cloudresourcemanager.googleapis.com serviceusage.googleapis.com
+
+curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+  "https://apigee.googleapis.com/v1/organizations/$APIGEE_ORG" | jq .
+
+curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+  "https://apigee.googleapis.com/v1/organizations/$APIGEE_ORG/environments" | jq .
+
+curl -i "$APIGEE_HOST/healthz"</code></pre>
+        </div>
+        <div>
+          <h2>Setup evidence checklist</h2>
+          <pre class="copyable"><code># Day 2 setup evidence
+- Project ID:
+- Apigee org:
+- Runtime region:
+- Environment:
+- Environment group:
+- Hostname:
+- Provisioning path: console | command line | Terraform
+- Learner role used:
+- First deployer service account:
+- DNS/TLS status:
+- First successful HTTP response:
+- Known limits or deferred production tasks:</code></pre>
+        </div>
+      </section>
+
+      <section class="code-section">
+        <h2>1. Local shell profile</h2>
+        <pre class="copyable"><code>export PROJECT_ID="your-gcp-project"
+export APIGEE_ORG="your-apigee-org"
+export APIGEE_ENV="eval"
+export APIGEE_HOST="https://api.example.com"
+export APIGEE_PROXY="banking-accounts-v1"
+export TOKEN="$(gcloud auth print-access-token)"
+gcloud config set project "$PROJECT_ID"</code></pre>
+      </section>
+
+      <section class="code-section">
+        <h2>2. Proxy bundle skeleton</h2>
+        <pre class="copyable"><code>mkdir -p apiproxy/{policies,proxies,targets,resources/jsc}
+touch apiproxy/proxies/default.xml
+touch apiproxy/targets/default.xml
+touch apiproxy/policies/AM-Set-Request-Headers.xml
+touch apiproxy/policies/SA-Burst-Protection.xml
+touch apiproxy/policies/JS-Validate-FAPI-Context.xml
+touch apiproxy/resources/jsc/validate-fapi-context.js</code></pre>
+      </section>
+
+      <section class="code-section">
+        <h2>Graduation proxy folder structure</h2>
+        <pre class="copyable"><code>banking-platform-v1/
+  apiproxy/
+    proxies/default.xml
+    targets/default.xml
+    policies/
+      VAK-Verify-Client.xml
+      OA-Verify-Access-Token.xml
+      JWT-Verify-Partner-Token.xml
+      JTP-Request-Shape.xml
+      Q-Product-Daily-Limit.xml
+      SA-Burst-Protection.xml
+      AM-Set-Audit-Headers.xml
+      RF-Invalid-Consent.xml
+    resources/jsc/
+      validate-fapi-context.js
+  sharedflows/
+    SF-Low-Risk-Gate/
+    SF-Partner-Gate/
+    SF-High-Security-Gate/
+  tests/
+    smoke.sh
+    negative.sh
+    quota.sh
+  docs/
+    openapi.yaml
+    adr-security-tier.md
+    runbook.md</code></pre>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>3. Minimal proxy endpoint</h2>
+          <pre class="copyable"><code>&lt;ProxyEndpoint name="default"&gt;
+  &lt;PreFlow name="PreFlow"&gt;
+    &lt;Request&gt;
+      &lt;Step&gt;&lt;Name&gt;SA-Burst-Protection&lt;/Name&gt;&lt;/Step&gt;
+      &lt;Step&gt;&lt;Name&gt;AM-Set-Request-Headers&lt;/Name&gt;&lt;/Step&gt;
+    &lt;/Request&gt;
+    &lt;Response/&gt;
+  &lt;/PreFlow&gt;
+  &lt;Flows&gt;
+    &lt;Flow name="GET accounts"&gt;
+      &lt;Condition&gt;(proxy.pathsuffix MatchesPath "/accounts") and (request.verb = "GET")&lt;/Condition&gt;
+    &lt;/Flow&gt;
+  &lt;/Flows&gt;
+  &lt;HTTPProxyConnection&gt;
+    &lt;BasePath&gt;/banking/v1&lt;/BasePath&gt;
+  &lt;/HTTPProxyConnection&gt;
+  &lt;RouteRule name="default"&gt;
+    &lt;TargetEndpoint&gt;default&lt;/TargetEndpoint&gt;
+  &lt;/RouteRule&gt;
+&lt;/ProxyEndpoint&gt;</code></pre>
+        </div>
+        <div>
+          <h2>4. Minimal target endpoint</h2>
+          <pre class="copyable"><code>&lt;TargetEndpoint name="default"&gt;
+  &lt;PreFlow name="PreFlow"&gt;
+    &lt;Request/&gt;
+    &lt;Response/&gt;
+  &lt;/PreFlow&gt;
+  &lt;HTTPTargetConnection&gt;
+    &lt;URL&gt;https://httpbin.org/anything&lt;/URL&gt;
+  &lt;/HTTPTargetConnection&gt;
+&lt;/TargetEndpoint&gt;</code></pre>
+        </div>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>5. Maven deploy profile</h2>
+          <pre class="copyable"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;training.apigee&lt;/groupId&gt;
+  &lt;artifactId&gt;banking-accounts-v1&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+  &lt;pluginRepositories&gt;
+    &lt;pluginRepository&gt;
+      &lt;id&gt;apigee-release&lt;/id&gt;
+      &lt;url&gt;https://raw.githubusercontent.com/apigee/apigee-deploy-maven-plugin/master/repository&lt;/url&gt;
+    &lt;/pluginRepository&gt;
+  &lt;/pluginRepositories&gt;
+  &lt;build&gt;
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;com.apigee.edge.config&lt;/groupId&gt;
+        &lt;artifactId&gt;apigee-config-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.7.0&lt;/version&gt;
+      &lt;/plugin&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;io.apigee.build-tools.enterprise4g&lt;/groupId&gt;
+        &lt;artifactId&gt;apigee-edge-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;2.5.2&lt;/version&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+  &lt;/build&gt;
+&lt;/project&gt;</code></pre>
+        </div>
+        <div>
+          <h2>6. Deploy command</h2>
+          <pre class="copyable"><code>mvn clean install -Ptest \
+  -Dorg="$APIGEE_ORG" \
+  -Denv="$APIGEE_ENV" \
+  -Dtoken="$TOKEN" \
+  -Dapigee.options=update</code></pre>
+          <h2>7. Smoke test</h2>
+          <pre class="copyable"><code>curl -i "$APIGEE_HOST/banking/v1/accounts" \
+  -H "x-correlation-id: lab-001" \
+  -H "accept: application/json"</code></pre>
+        </div>
+      </section>
+
+      <section class="visual-band">
+        <div>
+          <p class="eyebrow">Lab topology</p>
+          <h2>What learners build by the end</h2>
+          <p>The capstone is intentionally close to a production delivery path: source-controlled proxy, reusable shared flow, identity provider integration, product governance, analytics, deployment automation, and rollback notes.</p>
+        </div>
+        <div class="topology">
+          <span>Client app</span>
+          <span>Global HTTPS LB</span>
+          <span>Apigee proxy</span>
+          <span>Shared security flow</span>
+          <span>Backend service</span>
+          <span>Cloud Logging</span>
+          <span>API product</span>
+          <span>Developer portal</span>
+        </div>
+      </section>
+
+      <section class="content-panel">
+        <h2>Graduation proxy acceptance path</h2>
+        <div class="check-grid">
+          <label><input type="checkbox"> `/metadata` uses the low-security gate with API key, CORS, and basic quota.</label>
+          <label><input type="checkbox"> `/partners/accounts` uses the medium-security gate with OAuth/JWT, partner quota, and schema protection.</label>
+          <label><input type="checkbox"> `/accounts` uses the high-security gate with consent context, sender-constraint design notes, audit headers, and fail-closed behavior.</label>
+          <label><input type="checkbox"> All resources follow the REST design checklist and documented HTTP semantics.</label>
+          <label><input type="checkbox"> Tests cover success, missing credentials, bad scope, missing consent, burst, quota, malformed JSON, and backend failure.</label>
+          <label><input type="checkbox"> CI/CD, rollback, trace evidence, developer onboarding, and incident notes are included.</label>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>Apigee Mastery Program</span><span>Lab kit</span></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

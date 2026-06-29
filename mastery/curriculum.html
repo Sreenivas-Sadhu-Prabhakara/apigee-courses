@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>21-Day Flow | Apigee Mastery</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">A</span><span><strong>Apigee Mastery</strong><small>3-week hands-on program</small></span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="active" href="curriculum.html">21-Day Flow</a>
+        <a href="foundations.html">Foundations</a>
+        <a href="labs.html">Lab Kit</a>
+        <a href="policies.html">Policies</a>
+        <a href="patterns.html">Security Patterns</a>
+        <a href="assessments.html">Assessments</a>
+        <a href="resources.html">Sources</a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <p class="eyebrow">Instructor flow</p>
+        <h1>Day-by-day Apigee training plan</h1>
+        <p>The program is three calendar weeks. Weekdays are instructor-led build days, Saturdays are clinic and challenge days, and Sundays are consolidation days with reading, refactoring, and review. Every day has explicit practice work so learners leave with muscle memory, not just notes.</p>
+      </section>
+
+      <section class="visual-band">
+        <div>
+          <p class="eyebrow">Architecture spine</p>
+          <h2>Three-tier API platform model</h2>
+          <p>The course keeps returning to the same layered model: experience clients, Apigee/API management, and backend systems. Learners learn where each decision belongs and what must never be pushed into the wrong tier.</p>
+        </div>
+        <div class="tier-diagram" role="img" aria-label="Three tier API architecture">
+          <article><strong>Tier 1</strong><span>Experience and channel clients</span><p>Mobile, web, partner apps, internal tools, and developer portal consumers.</p></article>
+          <article><strong>Tier 2</strong><span>Apigee X API management</span><p>Proxy routing, policies, products, security tiers, mediation, analytics, and shared flows.</p></article>
+          <article><strong>Tier 3</strong><span>Backend services and data</span><p>Cloud Run, GKE, legacy services, identity systems, consent stores, ledgers, and observability sinks.</p></article>
+        </div>
+      </section>
+
+      <section class="legend-row" aria-label="Day type legend">
+        <span><b class="dot build"></b> Build</span>
+        <span><b class="dot security"></b> Security</span>
+        <span><b class="dot ops"></b> Operations</span>
+        <span><b class="dot review"></b> Review</span>
+      </section>
+
+      <section id="curriculumGrid" class="day-grid" aria-label="Twenty one day curriculum"></section>
+
+      <section class="visual-band">
+        <div>
+          <p class="eyebrow">Daily rhythm</p>
+          <h2>Repeatable class operating model</h2>
+          <p>Every instructor-led day uses the same cadence so beginners never feel lost and advanced learners always know where to push deeper.</p>
+        </div>
+        <div class="flow-diagram five">
+          <article><span>1</span><strong>Concept</strong><p>Architecture story, threat model, and policy anatomy.</p></article>
+          <article><span>2</span><strong>Demo</strong><p>Instructor builds the minimal working path.</p></article>
+          <article><span>3</span><strong>Lab</strong><p>Learners implement with copyable starter code.</p></article>
+          <article><span>4</span><strong>Break</strong><p>Introduce a realistic failure or abuse case.</p></article>
+          <article><span>5</span><strong>Defend</strong><p>Fix, test, trace, and document the decision.</p></article>
+        </div>
+      </section>
+
+      <section class="content-panel">
+        <h2>Graduation criteria</h2>
+        <div class="check-grid">
+          <label><input type="checkbox"> Build and deploy a proxy from local source control.</label>
+          <label><input type="checkbox"> Explain ProxyEndpoint, TargetEndpoint, flows, conditions, and route rules.</label>
+          <label><input type="checkbox"> Apply API key, OAuth, JWT, quota, spike arrest, and threat protection policies.</label>
+          <label><input type="checkbox"> Design high, medium, and low security patterns with trade-off notes.</label>
+          <label><input type="checkbox"> Diagnose failures using trace/debug, variables, analytics, and logs.</label>
+          <label><input type="checkbox"> Deliver the graduation proxy tying REST design, Apigee X setup, policies, security tiers, CI/CD, documentation, tests, and rollback together.</label>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>Apigee Mastery Program</span><span>Curriculum is designed for cohort delivery</span></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sources | Apigee Mastery</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">A</span><span><strong>Apigee Mastery</strong><small>3-week hands-on program</small></span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="curriculum.html">21-Day Flow</a>
+        <a href="foundations.html">Foundations</a>
+        <a href="labs.html">Lab Kit</a>
+        <a href="policies.html">Policies</a>
+        <a href="patterns.html">Security Patterns</a>
+        <a href="assessments.html">Assessments</a>
+        <a class="active" href="resources.html">Sources</a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <p class="eyebrow">Reference-backed curriculum</p>
+        <h1>Primary sources and instructor notes</h1>
+        <p>This curriculum uses Google Cloud Apigee documentation, GoogleCloudPlatform sample repositories, and OpenID Foundation FAPI specifications as source anchors.</p>
+      </section>
+
+      <section class="resource-list">
+        <article>
+          <h2>REST, HTTP, and URI foundations</h2>
+          <p>Architecture and protocol anchors for the first day of training.</p>
+          <a href="https://ics.uci.edu/~fielding/pubs/dissertation/top.htm">Roy Fielding dissertation: Architectural Styles and the Design of Network-based Software Architectures</a>
+          <a href="https://www.rfc-editor.org/rfc/rfc9110">RFC 9110: HTTP Semantics</a>
+          <a href="https://www.rfc-editor.org/rfc/rfc3986">RFC 3986: URI Generic Syntax</a>
+        </article>
+        <article>
+          <h2>Google Cloud Apigee fundamentals</h2>
+          <p>API proxies, lifecycle, local development, deployment behavior, and first proxy flow.</p>
+          <a href="https://docs.cloud.google.com/apigee/docs/api-platform/fundamentals/understanding-apis-and-api-proxies">Understanding APIs and API proxies</a>
+          <a href="https://docs.cloud.google.com/apigee/docs/api-platform/get-started/provisioning-intro">Apigee provisioning introduction</a>
+          <a href="https://docs.cloud.google.com/apigee/docs/api-platform/get-started/provisioning-options">Apigee provisioning options</a>
+          <a href="https://docs.cloud.google.com/apigee/docs/api-platform/local-development/overview">Local development overview</a>
+          <a href="https://docs.cloud.google.com/apigee/docs/api-platform/get-started/get-started">Build your first API proxy</a>
+        </article>
+        <article>
+          <h2>Apigee policies</h2>
+          <p>Policy details used in the cookbook and labs.</p>
+          <a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/oauthv2-policy">OAuthV2 policy</a>
+          <a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/spike-arrest-policy">SpikeArrest policy</a>
+          <a href="https://cloud.google.com/apigee/docs/api-platform/reference/policies/access-control-policy">AccessControl policy</a>
+          <a href="https://docs.cloud.google.com/apigee/docs/api-platform/develop/comparing-quota-and-spike-arrest-policies">Comparing rate-limiting policies</a>
+        </article>
+        <article>
+          <h2>Enterprise networking</h2>
+          <p>Where Apigee X sits in the traffic path, how routing works, and how backend load balancing is configured.</p>
+          <a href="https://docs.cloud.google.com/apigee/docs/api-platform/architecture/overview">Apigee architecture overview</a>
+          <a href="https://cloud.google.com/apigee/docs/api-platform/get-started/networking-options">Apigee networking options</a>
+          <a href="https://cloud.google.com/apigee/docs/api-platform/get-started/configure-routing">Customize access routing</a>
+          <a href="https://cloud.google.com/apigee/docs/api-platform/deploy/load-balancing-across-backend-servers">Load balancing across backend servers</a>
+        </article>
+        <article>
+          <h2>GoogleCloudPlatform samples</h2>
+          <p>Reusable examples for deployment, OAuth, JWT, quota, mTLS, CORS, threat protection, logging, and portals.</p>
+          <a href="https://github.com/GoogleCloudPlatform/apigee-samples">GoogleCloudPlatform/apigee-samples</a>
+        </article>
+        <article>
+          <h2>Open banking and FAPI</h2>
+          <p>High-security design anchors for regulated financial APIs.</p>
+          <a href="https://openid.net/specs/fapi-security-profile-2_0-final.html">FAPI 2.0 Security Profile final specification</a>
+          <a href="https://openid.net/specs/fapi-message-signing-2_0-final.html">FAPI 2.0 Message Signing final specification</a>
+          <a href="https://openid.net/wg/fapi/specifications/">OpenID FAPI Working Group specifications</a>
+        </article>
+      </section>
+
+      <section class="content-panel">
+        <h2>Instructor calibration notes</h2>
+        <p>Apigee can enforce gateway controls, validate tokens, shape traffic, mediate payloads, and create operational evidence. It does not replace the authorization server, consent platform, fraud engine, backend authorization, or regulatory governance. The training explicitly teaches these boundaries so learners build with good judgment.</p>
+      </section>
+    </main>
+    <footer class="footer"><span>Apigee Mastery Program</span><span>Sources and notes</span></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

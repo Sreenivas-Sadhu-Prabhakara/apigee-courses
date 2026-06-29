@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Assessments | Apigee Mastery</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">A</span><span><strong>Apigee Mastery</strong><small>3-week hands-on program</small></span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="curriculum.html">21-Day Flow</a>
+        <a href="foundations.html">Foundations</a>
+        <a href="labs.html">Lab Kit</a>
+        <a href="policies.html">Policies</a>
+        <a href="patterns.html">Security Patterns</a>
+        <a class="active" href="assessments.html">Assessments</a>
+        <a href="resources.html">Sources</a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <p class="eyebrow">Evaluation and capstone</p>
+        <h1>Assessments that prove platform readiness</h1>
+        <p>Learners are evaluated on implementation, explanation, troubleshooting, and architecture judgment. The final capstone is a live review, not a quiz.</p>
+      </section>
+
+      <section class="rubric">
+        <article><h2>Beginner pass</h2><p>Can build, deploy, call, trace, and modify a simple proxy with basic policies.</p><meter min="0" max="100" value="35"></meter></article>
+        <article><h2>Practitioner pass</h2><p>Can compose reusable policy flows, secure partner APIs, and diagnose runtime failures.</p><meter min="0" max="100" value="70"></meter></article>
+        <article><h2>Expert pass</h2><p>Can defend a security architecture, implement CI/CD, and run an incident-style review.</p><meter min="0" max="100" value="95"></meter></article>
+      </section>
+
+      <section class="content-panel">
+        <h2>Capstone brief</h2>
+        <p>Build a banking accounts API proxy that ties the whole course together: REST resource design, Apigee X environment setup, proxy and target endpoints, shared flows, low/medium/high security tiers, product governance, CI/CD, observability, negative testing, and an explicit rollback plan.</p>
+        <div class="check-grid">
+          <label><input type="checkbox"> Source-controlled proxy bundle with clear folder structure.</label>
+          <label><input type="checkbox"> OpenAPI contract and API product mapping.</label>
+          <label><input type="checkbox"> High-security shared flow with JWT validation, consent context, quota, spike arrest, and audit headers.</label>
+          <label><input type="checkbox"> Medium-security shared flow with OAuth scope and partner quota.</label>
+          <label><input type="checkbox"> Low-security shared flow with API key and CORS.</label>
+          <label><input type="checkbox"> Test evidence: curl scripts, negative tests, and trace screenshots or notes.</label>
+          <label><input type="checkbox"> Runbook: deploy, rollback, alert signals, and incident triage checklist.</label>
+          <label><input type="checkbox"> Architecture decision record explaining tier selection.</label>
+        </div>
+      </section>
+
+      <section class="code-section two-col">
+        <div>
+          <h2>Negative test script</h2>
+          <pre class="copyable"><code>#!/usr/bin/env bash
+set -euo pipefail
+
+base="${APIGEE_HOST}/banking/v1"
+
+curl -s -o /tmp/no-token.json -w "%{http_code}\n" "$base/accounts"
+curl -s -o /tmp/bad-scope.json -w "%{http_code}\n" "$base/accounts" \
+  -H "Authorization: Bearer ${TOKEN_WITH_BAD_SCOPE}"
+curl -s -o /tmp/no-consent.json -w "%{http_code}\n" "$base/accounts" \
+  -H "Authorization: Bearer ${VALID_TOKEN}"
+
+cat /tmp/no-token.json /tmp/bad-scope.json /tmp/no-consent.json</code></pre>
+        </div>
+        <div>
+          <h2>Architecture decision record</h2>
+          <pre class="copyable"><code># ADR: Security tier for /banking/v1/accounts
+
+Decision: High-security tier.
+
+Context:
+- Endpoint returns regulated account data.
+- Callers are third-party providers.
+- Consent and audit evidence are mandatory.
+
+Controls:
+- OAuth authorization flow with PKCE at the authorization server.
+- JWT validation at Apigee resource gateway.
+- Sender-constrained token strategy documented.
+- Consent ID, resource scope, quota, spike arrest, and audit headers.
+
+Consequences:
+- More integration work for partners.
+- Stronger replay resistance, traceability, and operational evidence.</code></pre>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>Apigee Mastery Program</span><span>Assessment model</span></footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
