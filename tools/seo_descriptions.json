@@ -1,6 +1,6 @@
 {
 "index.html": {
-"description": "Ship secure API platforms with Apigee X. Four hands-on training tracks cover open banking, FAPI, Spring Boot bridge, and AI Gateway from foundational to advanced.",
+"description": "Ship secure API platforms with Apigee X. Four hands-on training tracks cover open banking, FAPI, Spring Boot bridge",
 "keywords": [
 "apigee x",
 "api gateway",
@@ -166,7 +166,7 @@
 ]
 },
 "fapi-30-day/day-15.html": {
-"description": "Implement authorization-code + PKCE and mint/verify JWTs with GenerateJWT and VerifyJWT. Prevent code interception with S256 and sign id_tokens for user flows.",
+"description": "Implement authorization-code + PKCE and mint/verify JWTs with GenerateJWT and VerifyJWT. Prevent code interception with S256 and sign id_tokens for user",
 "keywords": [
 "PKCE",
 "authorization code flow",
@@ -270,7 +270,7 @@
 ]
 },
 "fapi-30-day/day-24.html": {
-"description": "Auto-onboard TPPs at scale with Dynamic Client Registration: verify Directory-signed SSAs as a trust anchor, cache TPP JWKS, complete certificate-bound tokens.",
+"description": "Auto-onboard TPPs at scale with Dynamic Client Registration: verify Directory-signed SSAs as a trust anchor, cache TPP JWKS",
 "keywords": [
 "DCR",
 "dynamic client registration",
@@ -405,7 +405,7 @@
 ]
 },
 "spring-boot-devs/session-03.html": {
-"description": "Author and deploy your first Apigee proxy in XML, then call it via curl. This passthrough reverse proxy proves your entire control-plane-to-backend stack end to end.",
+"description": "Author and deploy your first Apigee proxy in XML, then call it via curl. This passthrough reverse proxy proves your entire control-plane-to-backend stack end",
 "keywords": [
 "apigee proxy",
 "reverse proxy",
@@ -526,7 +526,7 @@
 ]
 },
 "spring-boot-devs/session-23.html": {
-"description": "Make tokens sender-constrained by stamping certificate thumbprints (cnf.x5t#S256) at issuance. Enforce binding on every call and expose RFC 7662 introspection.",
+"description": "Make tokens sender-constrained by stamping certificate thumbprints (cnf.x5t#S256) at issuance. Enforce binding on every call and expose RFC 7662",
 "keywords": [
 "certificate-bound tokens",
 "sender-constrained",
@@ -537,7 +537,7 @@
 ]
 },
 "spring-boot-devs/session-24.html": {
-"description": "Implement automated client registration: validate the Software Statement from the OB Directory, auto-provision a developer app, and return client_id per RFC 7591.",
+"description": "Implement automated client registration: validate the Software Statement from the OB Directory, auto-provision a developer app",
 "keywords": [
 "dynamic client registration",
 "Software Statement",
@@ -592,7 +592,7 @@
 ]
 },
 "spring-boot-devs/session-29.html": {
-"description": "Promote one immutable revision across environments: let TargetServers and KVMs differ per environment so dev and test talk to different backends from one bundle.",
+"description": "Promote one immutable revision across environments: let TargetServers and KVMs differ per environment so dev and test talk to different backends from one",
 "keywords": [
 "environments",
 "deployment promotion",
@@ -615,7 +615,7 @@
 ]
 },
 "spring-boot-devs/session-31.html": {
-"description": "Measure API traffic automatically with Apigee Analytics, stream logs to Cloud Logging, trace requests with Cloud Trace, and detect abuse with Advanced API Security.",
+"description": "Measure API traffic automatically with Apigee Analytics, stream logs to Cloud Logging, trace requests with Cloud Trace",
 "keywords": [
 "api analytics",
 "cloud logging",
@@ -639,7 +639,7 @@
 ]
 },
 "spring-boot-devs/session-33.html": {
-"description": "Assemble a regulated Open Banking platform from DCR, consent, AISP, PISP, and CoF operations behind FAPI and mTLS, then run a go-live readiness review checklist.",
+"description": "Assemble a regulated Open Banking platform from DCR, consent, AISP, PISP, and CoF operations behind FAPI and mTLS",
 "keywords": [
 "open banking",
 "go-live readiness",
@@ -758,7 +758,7 @@
 ]
 },
 "tetrate-ai-gateway/session-10.html": {
-"description": "Route embeddings, multimodal, and image endpoints through your AI gateway using the same governance as chat, accounting for different token metering per call type.",
+"description": "Route embeddings, multimodal, and image endpoints through your AI gateway using the same governance as chat, accounting for different token metering per call",
 "keywords": [
 "embeddings",
 "multimodal",
@@ -780,7 +780,7 @@
 ]
 },
 "tetrate-ai-gateway/session-12.html": {
-"description": "Attribute AI token spend to users, teams, and applications at the edge, produce cost-per-team reports, and enforce budgets per cost center without per-service logic.",
+"description": "Attribute AI token spend to users, teams, and applications at the edge, produce cost-per-team reports, and enforce budgets per cost center without",
 "keywords": [
 "cost attribution",
 "budgets",
@@ -813,7 +813,7 @@
 ]
 },
 "tetrate-ai-gateway/session-15.html": {
-"description": "Authenticate every AI caller at the edge with JWT, API keys, or OIDC before governance policies apply, turning spoofable headers into verified claims for budgets.",
+"description": "Authenticate every AI caller at the edge with JWT, API keys, or OIDC before governance policies apply, turning spoofable headers into verified claims for",
 "keywords": [
 "caller authentication",
 "jwt",
@@ -835,7 +835,7 @@
 ]
 },
 "tetrate-ai-gateway/session-17.html": {
-"description": "Redact PII and sensitive data from prompts before egress to third-party providers and from gateway logs using pattern-based detection for cards, emails, and secrets.",
+"description": "Redact PII and sensitive data from prompts before egress to third-party providers and from gateway logs using pattern-based detection for cards, emails",
 "keywords": [
 "pii redaction",
 "data loss prevention",
@@ -880,7 +880,7 @@
 ]
 },
 "tetrate-ai-gateway/session-21.html": {
-"description": "Front Model Context Protocol tool servers with MCPRoute, routing agent tool calls through one governed endpoint instead of embedding raw clients into agent code.",
+"description": "Front Model Context Protocol tool servers with MCPRoute, routing agent tool calls through one governed endpoint instead of embedding raw clients into agent",
 "keywords": [
 "mcp",
 "model context protocol",
@@ -891,7 +891,7 @@
 ]
 },
 "tetrate-ai-gateway/session-22.html": {
-"description": "Aggregate multiple MCP tool servers behind one MCPRoute surface, using tool-name prefixing to multiplex calls and toolSelector to expose only safe subsets to agents.",
+"description": "Aggregate multiple MCP tool servers behind one MCPRoute surface, using tool-name prefixing to multiplex calls and toolSelector to expose only safe subsets to",
 "keywords": [
 "tool aggregation",
 "tool multiplexing",
@@ -1047,7 +1047,7 @@
 ]
 },
 "mastery/patterns.html": {
-"description": "Choose security patterns for your API portfolio: high-tier open banking, medium-tier partner APIs, low-tier public APIs. Includes decision matrix and templates.",
+"description": "Choose security patterns for your API portfolio: high-tier open banking, medium-tier partner APIs, low-tier public APIs",
 "keywords": [
 "security-patterns",
 "high-security",
@@ -1080,7 +1080,7 @@
 ]
 },
 "spring-boot-devs/session-10.html": {
-"description": "Learn when to use JavaScript policies vs Java callouts in Apigee X. Understand the trade-off between lightweight scripts and compiled JARs for custom gateway logic.",
+"description": "Learn when to use JavaScript policies vs Java callouts in Apigee X. Understand the trade-off between lightweight scripts and compiled JARs for custom gateway",
 "keywords": [
 "javascript policy",
 "java callout",
@@ -1092,7 +1092,7 @@
 ]
 },
 "spring-boot-devs/session-11.html": {
-"description": "Master distributed rate limiting in Apigee X. Understand SpikeArrest for smoothing bursts and product-scoped Quotas for enforcing API entitlements across instances.",
+"description": "Master distributed rate limiting in Apigee X. Understand SpikeArrest for smoothing bursts and product-scoped Quotas for enforcing API entitlements across",
 "keywords": [
 "quotas",
 "spikearrest",
@@ -1104,7 +1104,7 @@
 ]
 },
 "spring-boot-devs/session-12.html": {
-"description": "Choose the right data store in Apigee X: ResponseCache for TTL values, KVMs for mutable config, PropertySets for read-only bundles. Skip unnecessary databases.",
+"description": "Choose the right data store in Apigee X: ResponseCache for TTL values, KVMs for mutable config, PropertySets for read-only bundles",
 "keywords": [
 "caching",
 "key-value map",
