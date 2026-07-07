@@ -57,10 +57,9 @@ def crumb(items):
     return {"@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":n,"item":u} for i,(n,u) in enumerate(items)]}
 
-GITHUB     = "https://github.com/Sreenivas-Sadhu-Prabhakara"
-ORG_INLINE = {"@type":"Organization","name":SITE,"url":BASE+"/","sameAs":[GITHUB],
+ORG_INLINE = {"@type":"Organization","name":SITE,"url":BASE+"/",
               "logo":{"@type":"ImageObject","url":BASE+"/assets/og/logo.png","width":1200,"height":1200}}
-PERSON     = {"@type":"Person","name":AUTHOR,"url":GITHUB}
+PERSON     = {"@type":"Person","name":AUTHOR}
 
 def build_jsonld(kind, course, rel, url, text_title, desc, keywords):
     if kind == "hub":
