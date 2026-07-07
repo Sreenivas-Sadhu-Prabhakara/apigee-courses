@@ -17,6 +17,7 @@ BASE   = "https://sreenivas-sadhu-prabhakara.github.io/apigee-courses"
 SITE   = "Apigee X Training Hub"
 AUTHOR = "Sreenivas Sadhu Prabhakara"
 TODAY  = _dt.date.today().isoformat()
+PUBDATE = "2026-06-29"  # first-commit date of the course content (from git; real, not fabricated)
 DESC_FILE = os.path.join(_HERE, "seo_descriptions.json")
 
 COURSES = {
@@ -57,6 +58,16 @@ def crumb(items):
     return {"@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":n,"item":u} for i,(n,u) in enumerate(items)]}
 
+def course_lessons(course):
+    """(url, short-title) for every lesson page in a course dir, in filename order."""
+    out=[]
+    for f in sorted(glob.glob(os.path.join(ROOT, course, "*.html"))):
+        rel=os.path.relpath(f, ROOT)
+        if os.path.basename(rel)=="index.html": continue
+        t=html.unescape(get_title(open(f,encoding="utf-8").read())).split(" · ")[0].strip()
+        out.append((url_for(rel), t))
+    return out
+
 ORG_INLINE = {"@type":"Organization","name":SITE,"url":BASE+"/",
               "logo":{"@type":"ImageObject","url":BASE+"/assets/og/logo.png","width":1200,"height":1200}}
 PERSON     = {"@type":"Person","name":AUTHOR}
@@ -74,10 +85,13 @@ def build_jsonld(kind, course, rel, url, text_title, desc, keywords):
         ]
     elif kind == "courseIndex":
         c=COURSES[course]; cu=BASE+"/"+course+"/"
+        lessons=course_lessons(course)
         graph=[
           {"@type":"Course","@id":cu+"#course","name":c["name"],"description":desc,"url":cu,
            "provider":ORG_INLINE,"author":PERSON,"inLanguage":"en","isAccessibleForFree":True,
-           "dateModified":TODAY,"educationLevel":c["level"],
+           "datePublished":PUBDATE,"dateModified":TODAY,"educationalLevel":c["level"],
+           "hasPart":{"@type":"ItemList","numberOfItems":len(lessons),"itemListElement":[
+               {"@type":"ListItem","position":i+1,"url":lu,"name":ln} for i,(lu,ln) in enumerate(lessons)]},
            "about":keywords,
            "offers":{"@type":"Offer","category":"Free","price":"0","priceCurrency":"USD",
                      "availability":"https://schema.org/InStock"},
@@ -90,7 +104,8 @@ def build_jsonld(kind, course, rel, url, text_title, desc, keywords):
         leaf = text_title.split(" · ")[0].strip()
         graph=[
           {"@type":"LearningResource","@id":url+"#lesson","name":text_title,"description":desc,"url":url,
-           "inLanguage":"en","isAccessibleForFree":True,"dateModified":TODAY,"learningResourceType":"lesson",
+           "inLanguage":"en","isAccessibleForFree":True,"datePublished":PUBDATE,"dateModified":TODAY,
+           "educationalLevel":c["level"],"learningResourceType":"lesson",
            "teaches":keywords,"author":PERSON,"provider":ORG_INLINE,
            "isPartOf":{"@type":"Course","@id":cu+"#course","name":c["name"],"url":cu}},
           crumb([("Home",BASE+"/"),(c["name"],cu),(leaf,url)]),
@@ -145,6 +160,10 @@ def build_block(rel, has_favicon, favicon_href):
     L.append('  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">')
     if not has_favicon:
         L.append(f'  <link rel="icon" href="{favicon_href}">')
+    # PWA / mobile chrome
+    L.append('  <meta name="theme-color" content="#0a0e12">')
+    L.append(f'  <link rel="apple-touch-icon" href="{BASE}/assets/og/apple-touch-icon.png">')
+    L.append(f'  <link rel="manifest" href="{BASE}/site.webmanifest">')
     # Open Graph
     L.append(f'  <meta property="og:type" content="{og_type}">')
     L.append(f'  <meta property="og:site_name" content="{attr(SITE)}">')
@@ -172,6 +191,14 @@ FAV_RE = re.compile(r"<link[^>]+rel=[\"']icon[\"'][^>]*>", re.IGNORECASE)
 # that mirrors the opening one via a backreference rather than any quote char.
 FAV_HREF_RE = re.compile(r"<link[^>]+rel=[\"']icon[\"'][^>]*href=([\"'])(.*?)\1", re.IGNORECASE)
 
+def add_img_perf(text):
+    """Add loading=lazy + decoding=async to any <img> that lacks a loading attr (CLS/LCP)."""
+    def repl(m):
+        tag=m.group(0)
+        if re.search(r"\bloading=", tag): return tag
+        return re.sub(r"\s*/?>$", ' loading="lazy" decoding="async">', tag)
+    return re.sub(r"<img\b[^>]*>", repl, text)
+
 def process(rel, favicon_href):
     path = os.path.join(ROOT, rel)
     text = open(path, encoding="utf-8").read()
@@ -187,13 +214,14 @@ def process(rel, favicon_href):
     # ensure single newline before </head>
     head = head.rstrip("\n") + "\n" + block + "\n"
     new = text[:m.start()] + open_tag + head + close_tag + text[m.end():]
+    new = add_img_perf(new)
     if new != text:
         open(path,"w",encoding="utf-8").write(new)
     return True
 
 def main():
     files = sorted(f for f in glob.glob(os.path.join(ROOT,"**/*.html"),recursive=True)
-                   if "/.git/" not in f)
+                   if "/.git/" not in f and os.path.basename(f) != "404.html")
     rels = [os.path.relpath(f, ROOT) for f in files]
     # favicon href reused from hub index.html
     hub = open(os.path.join(ROOT,"index.html"),encoding="utf-8").read()
@@ -204,22 +232,23 @@ def main():
         if process(rel, favicon_href): ok+=1
     print(f"processed {ok}/{len(rels)} html files")
 
-    # sitemap.xml
+    # sitemap.xml (with image extension: declare the per-page OG card)
     def prio_freq(rel):
         kind,_=classify(rel)
         return ("1.0" if kind=="hub" else "0.9" if kind=="courseIndex" else "0.7","monthly")
-    urls=[]
+    sm=['<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+        ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
     for rel in rels:
         u=url_for(rel); p,f=prio_freq(rel)
-        urls.append((u,p,f))
-    sm=['<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for u,p,f in urls:
+        kind,course=classify(rel)
+        og=BASE+"/assets/og/"+(HUB_OG if kind=="hub" else COURSES[course]["og"])
         sm+=["  <url>",f"    <loc>{u}</loc>",f"    <lastmod>{TODAY}</lastmod>",
-             f"    <changefreq>{f}</changefreq>",f"    <priority>{p}</priority>","  </url>"]
+             f"    <changefreq>{f}</changefreq>",f"    <priority>{p}</priority>",
+             "    <image:image>",f"      <image:loc>{og}</image:loc>","    </image:image>","  </url>"]
     sm.append("</urlset>")
     open(os.path.join(ROOT,"sitemap.xml"),"w").write("\n".join(sm)+"\n")
-    print(f"wrote sitemap.xml with {len(urls)} urls")
+    print(f"wrote sitemap.xml with {len(rels)} urls (+image)")
 
     # robots.txt
     robots=("User-agent: *\nAllow: /\n\nSitemap: "+BASE+"/sitemap.xml\n")
