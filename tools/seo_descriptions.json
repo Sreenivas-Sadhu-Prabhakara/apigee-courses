@@ -1,0 +1,1202 @@
+{
+"index.html": {
+"description": "Ship secure API platforms with Apigee X. Four hands-on training tracks cover open banking, FAPI, Spring Boot bridge, and AI Gateway from foundational to advanced.",
+"keywords": [
+"apigee x",
+"api gateway",
+"api platform",
+"open banking",
+"fapi",
+"spring boot",
+"envoy"
+]
+},
+"fapi-30-day/day-01.html": {
+"description": "Learn Apigee X architecture: control plane, runtime plane, environments, proxy endpoints, and how requests flow from client through runtime to backend.",
+"keywords": [
+"apigee x architecture",
+"control plane",
+"runtime plane",
+"proxy endpoints",
+"api management",
+"environment groups"
+]
+},
+"fapi-30-day/day-02.html": {
+"description": "Provision a free Apigee X evaluation organization on Google Cloud and install apigeecli for managing proxies, deployments, and API products.",
+"keywords": [
+"apigee x provisioning",
+"apigeecli",
+"gcloud setup",
+"eval organization",
+"gcp project setup",
+"api deployment"
+]
+},
+"fapi-30-day/day-03.html": {
+"description": "Build a reverse-proxy bundle with manifest, ProxyEndpoint, TargetEndpoint files and deploy to your Apigee environment using apigeecli.",
+"keywords": [
+"api proxy bundle",
+"proxyendpoint",
+"targetendpoint",
+"basepath",
+"proxy deployment",
+"bundle structure"
+]
+},
+"fapi-30-day/day-04.html": {
+"description": "Master conditional flows per HTTP method and path, understand the request/response pipeline, and route to different backends with RouteRules.",
+"keywords": [
+"conditional flows",
+"request pipeline",
+"routerule",
+"flow conditions",
+"pipeline execution",
+"conditional routing"
+]
+},
+"fapi-30-day/day-05.html": {
+"description": "Learn the universal policy pattern: XML files plus Step attachments to flows, starting with AssignMessage to build and modify responses.",
+"keywords": [
+"apigee policies",
+"assignmessage",
+"policy attachment",
+"step pattern",
+"policy execution",
+"flow steps"
+]
+},
+"fapi-30-day/day-06.html": {
+"description": "Protect backends with Quota for business limits, SpikeArrest for burst smoothing, and ConcurrentRateLimit for simultaneous call caps.",
+"keywords": [
+"quota policy",
+"spikearrest",
+"rate limiting",
+"traffic management",
+"concurrent rate limit",
+"backend protection"
+]
+},
+"fapi-30-day/day-07.html": {
+"description": "Extract values from requests with ExtractVariables and reshape messages with AssignMessage Set/Add/Copy/Remove for mediation in both directions.",
+"keywords": [
+"flow variables",
+"extractvariables",
+"message mediation",
+"request transformation",
+"variable substitution",
+"mediation"
+]
+},
+"fapi-30-day/day-08.html": {
+"description": "Write JavaScript policies for complex transformation logic and use message templates with built-in functions for dynamic values without code.",
+"keywords": [
+"javascript policy",
+"message templates",
+"transformation",
+"context variables",
+"template functions",
+"api transformation"
+]
+},
+"fapi-30-day/day-09.html": {
+"description": "Call secondary services mid-flow with ServiceCallout and decouple backend hostnames from your bundle using environment-specific TargetServers.",
+"keywords": [
+"servicecallout",
+"targetserver",
+"service composition",
+"mid-flow callout",
+"backend configuration",
+"environment portability"
+]
+},
+"fapi-30-day/day-10.html": {
+"description": "Reduce latency with ResponseCache for reference data, cache computed values with LookupCache/PopulateCache, and store config in Key Value Maps.",
+"keywords": [
+"responsecache",
+"lookupcache",
+"populatecache",
+"key value maps",
+"caching strategy",
+"backend optimization"
+]
+},
+"fapi-30-day/day-11.html": {
+"description": "Handle faults in Apigee with RaiseFault, FaultRules, and DefaultFaultRule. Build an OBIE error taxonomy for validation, rate-limit, and unexpected failures.",
+"keywords": [
+"fault handling",
+"RaiseFault policy",
+"FaultRules",
+"OBIE error",
+"error taxonomy",
+"error envelope"
+]
+},
+"fapi-30-day/day-12.html": {
+"description": "Build shared flows and attach via FlowCallout or flow hooks to centralize FAPI headers and errors. Enforce cross-cutting policy across proxies, no copy-paste.",
+"keywords": [
+"shared flows",
+"flow hooks",
+"FlowCallout",
+"reusable policies",
+"cross-cutting concerns",
+"governance"
+]
+},
+"fapi-30-day/day-13.html": {
+"description": "Model app identity with developers, apps, and API products; gate with VerifyAPIKey. Bind product quotas so plan changes skip redeploy, the governance unit.",
+"keywords": [
+"app identity",
+"VerifyAPIKey",
+"API products",
+"developer apps",
+"quota management",
+"access control"
+]
+},
+"fapi-30-day/day-14.html": {
+"description": "Issue OAuth 2.0 bearer tokens via GenerateAccessToken (client-credentials grant); protect resources with VerifyAccessToken. Give TPPs short-lived credentials.",
+"keywords": [
+"OAuth 2.0",
+"token endpoint",
+"client credentials",
+"OAuthV2",
+"bearer tokens",
+"access tokens"
+]
+},
+"fapi-30-day/day-15.html": {
+"description": "Implement authorization-code + PKCE and mint/verify JWTs with GenerateJWT and VerifyJWT. Prevent code interception with S256 and sign id_tokens for user flows.",
+"keywords": [
+"PKCE",
+"authorization code flow",
+"JWT",
+"GenerateJWT",
+"VerifyJWT",
+"OAuth2"
+]
+},
+"fapi-30-day/day-16.html": {
+"description": "Secure proxy edges with keystores and truststores; add mTLS for backends. Use references for zero-downtime rotation and expose client certs for FAPI binding.",
+"keywords": [
+"mTLS",
+"keystores",
+"truststores",
+"transport security",
+"TLS",
+"certificate binding"
+]
+},
+"fapi-30-day/day-17.html": {
+"description": "Block malformed JSON and injection with threat protection, enable CORS safely for browser TPPs, mask PII in traces/logs. Centralize defenses in shared flows.",
+"keywords": [
+"threat protection",
+"CORS",
+"data masking",
+"JSONThreatProtection",
+"payload validation",
+"security"
+]
+},
+"fapi-30-day/day-18.html": {
+"description": "Learn the FAPI 1.0 Advanced 12-point checklist: PAR, PS256 request objects, private_key_jwt auth, cert-bound tokens, JARM. Map each to Apigee mechanisms.",
+"keywords": [
+"FAPI 1.0 Advanced",
+"security profile",
+"PAR",
+"PS256",
+"private_key_jwt",
+"certificate binding"
+]
+},
+"fapi-30-day/day-19.html": {
+"description": "Build the FAPI authorization server: PAR endpoint with PS256 request-object checks, private_key_jwt client auth, and cert-bound tokens per resource access.",
+"keywords": [
+"FAPI implementation",
+"PAR endpoint",
+"certificate-bound tokens",
+"private_key_jwt",
+"authorization server",
+"Open Banking"
+]
+},
+"fapi-30-day/day-20.html": {
+"description": "Map the UK Open Banking ecosystem: ASPSP (bank), TPP roles (AISP/PISP), PSU consent, Directory, SSA, and OBWAC (mTLS) vs OBSEAL (signing) certificates.",
+"keywords": [
+"Open Banking",
+"ASPSP",
+"TPP",
+"AISP",
+"PISP",
+"consent",
+"Directory",
+"OBWAC"
+]
+},
+"fapi-30-day/day-21.html": {
+"description": "Build the account-access consent lifecycle on Apigee: create consents, bind them to PSU authorization, enforce status and permissions on every data call.",
+"keywords": [
+"consent",
+"account-access",
+"lifecycle",
+"authorization",
+"permissions",
+"enforcement",
+"PSU"
+]
+},
+"fapi-30-day/day-22.html": {
+"description": "Expose OBIE account information APIs secured by consent permission checks: shape core responses into Data/Links/Meta envelopes with pagination.",
+"keywords": [
+"AISP",
+"account information",
+"accounts",
+"balances",
+"transactions",
+"permissions",
+"OBIE"
+]
+},
+"fapi-30-day/day-23.html": {
+"description": "Build payment-initiation APIs with two-step consent, detached JWS signature verification, idempotency, immutable initiation and funds checks.",
+"keywords": [
+"PISP",
+"payment",
+"domestic",
+"JWS",
+"signature",
+"idempotency",
+"settlement"
+]
+},
+"fapi-30-day/day-24.html": {
+"description": "Auto-onboard TPPs at scale with Dynamic Client Registration: verify Directory-signed SSAs as a trust anchor, cache TPP JWKS, complete certificate-bound tokens.",
+"keywords": [
+"DCR",
+"dynamic client registration",
+"SSA",
+"certificate-bound",
+"onboarding",
+"trust",
+"JWKS"
+]
+},
+"fapi-30-day/day-25.html": {
+"description": "Assemble a production-ready Open Banking proxy estate: shared security flows, MECE decomposition by concern, flow hooks for governance, and conformance.",
+"keywords": [
+"capstone",
+"proxy estate",
+"shared flows",
+"governance",
+"FAPI",
+"conformance",
+"architecture"
+]
+},
+"fapi-30-day/day-26.html": {
+"description": "Promote identical proxy revisions across test and prod: route by hostname via environment groups, externalize all config into TargetServers and KVMs.",
+"keywords": [
+"environments",
+"promotion",
+"revision",
+"env groups",
+"config",
+"TargetServer",
+"KVM",
+"deployment"
+]
+},
+"fapi-30-day/day-27.html": {
+"description": "Automate proxy delivery with GitHub Actions: lint and deploy to test, run API contract tests, gate production promotion with four-eyes review.",
+"keywords": [
+"CI/CD",
+"pipeline",
+"automation",
+"GitHub Actions",
+"deployment",
+"testing",
+"promotion"
+]
+},
+"fapi-30-day/day-28.html": {
+"description": "Master four observability lenses: Analytics for trends, Cloud Logging for audit trails, Cloud Trace for latency attribution, Debug for live troubleshooting.",
+"keywords": [
+"observability",
+"analytics",
+"logging",
+"tracing",
+"debug",
+"audit",
+"Cloud Logging"
+]
+},
+"fapi-30-day/day-29.html": {
+"description": "Package proxies into API products and publish on a developer portal: attach OpenAPI specs, optional monetization, and catalog everything in API hub.",
+"keywords": [
+"API products",
+"portal",
+"OpenAPI",
+"discovery",
+"monetization",
+"API hub",
+"developer"
+]
+},
+"fapi-30-day/day-30.html": {
+"description": "Execute production-readiness review: performance budgets, multi-region failover, security hardening checklist, operations runbooks, compliance audit trail.",
+"keywords": [
+"production readiness",
+"performance",
+"multi-region",
+"security",
+"hardening",
+"operations",
+"compliance"
+]
+},
+"fapi-30-day/index.html": {
+"description": "Go from zero to shipping a FAPI-secured UK Open Banking API on Apigee X: master OAuth, mTLS, JWS/JWT, consent, and API proxy development with hands-on labs.",
+"keywords": [
+"apigee x training",
+"fapi security profile",
+"uk open banking",
+"oauth 2.0",
+"mtls",
+"api proxy development",
+"jwt"
+]
+},
+"spring-boot-devs/index.html": {
+"description": "Master Apigee X across 33 sessions that map every concept to Spring Boot. Learn FAPI, Open Banking, and production APIs with hands-on labs in your eval org.",
+"keywords": [
+"apigee x",
+"spring boot",
+"api gateway",
+"open banking",
+"fapi",
+"api management",
+"course",
+"evaluation org"
+]
+},
+"spring-boot-devs/session-01.html": {
+"description": "Learn what separates API management from a basic gateway: the 80% around the proxy—consumers, analytics, publishing, lifecycle, and policy-based control.",
+"keywords": [
+"api management",
+"api gateway",
+"policies",
+"product",
+"reverse proxy",
+"consumers",
+"entitlements",
+"lifecycle"
+]
+},
+"spring-boot-devs/session-02.html": {
+"description": "Understand Apigee X's control plane and runtime architecture. Map the org-environment-group-instance hierarchy and provision a free evaluation org for labs.",
+"keywords": [
+"apigee architecture",
+"control plane",
+"runtime",
+"environment",
+"evaluation org",
+"provisioning",
+"org hierarchy"
+]
+},
+"spring-boot-devs/session-03.html": {
+"description": "Author and deploy your first Apigee proxy in XML, then call it via curl. This passthrough reverse proxy proves your entire control-plane-to-backend stack end to end.",
+"keywords": [
+"apigee proxy",
+"reverse proxy",
+"deployment",
+"bundle",
+"passthrough",
+"curl",
+"basepath",
+"targeting"
+]
+},
+"spring-boot-devs/session-04.html": {
+"description": "Manage proxy revisions as immutable artifacts. Deploy changes, roll back safely, and prove both with curl: deploy is a cheap pointer move, not a rebuild.",
+"keywords": [
+"apigee revisions",
+"immutable",
+"deploy",
+"rollback",
+"versioning",
+"environment deployment",
+"artifact management"
+]
+},
+"spring-boot-devs/session-05.html": {
+"description": "Debug Apigee proxies with the Trace tool: see every policy execute in order, watch flow variables at each step, and pinpoint exactly where requests go wrong.",
+"keywords": [
+"apigee trace",
+"debugging",
+"policy execution",
+"flow variables",
+"debug api",
+"transaction timeline",
+"request debugging"
+]
+},
+"spring-boot-devs/session-06.html": {
+"description": "Discover the flow model: two endpoints and four attach points where policies run. Grasp ProxyEndpoint and TargetEndpoint separation, the base of every proxy.",
+"keywords": [
+"apigee flow model",
+"proxy endpoints",
+"attach points",
+"request/response",
+"target endpoint",
+"proxy endpoint",
+"policy placement",
+"flow architecture"
+]
+},
+"spring-boot-devs/session-07.html": {
+"description": "Master the flow-variable namespace: request, response, system, client, custom. Policies share typed, request-scoped variables across four attach points.",
+"keywords": [
+"apigee flow variables",
+"message model",
+"policy integration",
+"request context",
+"typed variables",
+"variable namespaces",
+"message templating"
+]
+},
+"spring-boot-devs/session-08.html": {
+"description": "Route and branch with conditions over flow variables. Build conditional flows and RouteRules, a config-driven alternative to controller if/switch logic.",
+"keywords": [
+"apigee routing",
+"conditions",
+"conditional flows",
+"route rules",
+"declarative routing",
+"path matching",
+"flow branching"
+]
+},
+"spring-boot-devs/session-09.html": {
+"description": "Extract path segments, query params, headers, and JSON fields into variables. Reshape requests and responses with AssignMessage to replace custom code.",
+"keywords": [
+"apigee mediation",
+"extract variables",
+"assign message",
+"payload transformation",
+"message reshaping",
+"jsonpath",
+"header manipulation"
+]
+},
+"spring-boot-devs/session-20.html": {
+"description": "Learn the four Open Banking roles (ASPSP, AISP, PISP, CBPII) and the OB Directory trust model. Validate TPP certificates and enforce the regulated framework.",
+"keywords": [
+"open banking",
+"trust framework",
+"OBIE roles",
+"TPP",
+"eIDAS certificates",
+"OB directory",
+"regulated identity"
+]
+},
+"spring-boot-devs/session-21.html": {
+"description": "Understand FAPI Advanced as hardened OAuth: nine independent clauses from PAR to JARM, each mapped to an Apigee policy. Build your implementation checklist.",
+"keywords": [
+"FAPI",
+"OAuth hardening",
+"PAR",
+"signed request",
+"algorithm restrictions",
+"mTLS token",
+"JARM"
+]
+},
+"spring-boot-devs/session-22.html": {
+"description": "Implement FAPI PAR: verify signed request objects with VerifyJWT, authenticate clients with private_key_jwt, and store requests by request_uri for authorize.",
+"keywords": [
+"PAR",
+"pushed authorization",
+"request object",
+"client authentication",
+"private_key_jwt",
+"request_uri"
+]
+},
+"spring-boot-devs/session-23.html": {
+"description": "Make tokens sender-constrained by stamping certificate thumbprints (cnf.x5t#S256) at issuance. Enforce binding on every call and expose RFC 7662 introspection.",
+"keywords": [
+"certificate-bound tokens",
+"sender-constrained",
+"cnf claim",
+"token introspection",
+"RFC 7662",
+"FAPI"
+]
+},
+"spring-boot-devs/session-24.html": {
+"description": "Implement automated client registration: validate the Software Statement from the OB Directory, auto-provision a developer app, and return client_id per RFC 7591.",
+"keywords": [
+"dynamic client registration",
+"Software Statement",
+"DCR",
+"automated provisioning",
+"RFC 7591",
+"OB directory"
+]
+},
+"spring-boot-devs/session-25.html": {
+"description": "Model account-access consent as a state machine (AwaitingAuthorisation → Authorised → Revoked). Persist state in a KVM and gate every read on consent status.",
+"keywords": [
+"account-access consent",
+"state machine",
+"consent lifecycle",
+"KVM",
+"consent status",
+"permissions"
+]
+},
+"spring-boot-devs/session-26.html": {
+"description": "Implement consent-scoped AISP reads by enforcing three checks: token scope, Authorised consent status, and requested account in the consent set.",
+"keywords": [
+"AISP",
+"consent-scoped reads",
+"account information",
+"authorization layers",
+"consent status",
+"permission"
+]
+},
+"spring-boot-devs/session-27.html": {
+"description": "Guard domestic payments with x-idempotency-key: cache the first submission, replay it on retry, and prevent duplicate money movement via gateway dedup.",
+"keywords": [
+"PISP",
+"domestic payment",
+"idempotency",
+"idempotency key",
+"deduplication",
+"retry protection"
+]
+},
+"spring-boot-devs/session-28.html": {
+"description": "Implement Confirmation of Funds (CBPII) with one boolean response and privacy-by-design, then orchestrate the end-to-end journey: consent, read, pay, confirm.",
+"keywords": [
+"confirmation of funds",
+"CBPII",
+"end-to-end journey",
+"funds available",
+"privacy-by-design",
+"OBIE"
+]
+},
+"spring-boot-devs/session-29.html": {
+"description": "Promote one immutable revision across environments: let TargetServers and KVMs differ per environment so dev and test talk to different backends from one bundle.",
+"keywords": [
+"environments",
+"deployment promotion",
+"target servers",
+"environment group",
+"immutable revision",
+"configuration"
+]
+},
+"spring-boot-devs/session-30.html": {
+"description": "Treat Apigee config as code: lint bundles with apigeelint, build revisions with apigeecli, deploy via CI/CD, and authenticate runners with Workload Identity.",
+"keywords": [
+"ci/cd pipeline",
+"apigeelint",
+"apigeecli",
+"workload identity federation",
+"github actions",
+"git-driven deployment",
+"secure authentication"
+]
+},
+"spring-boot-devs/session-31.html": {
+"description": "Measure API traffic automatically with Apigee Analytics, stream logs to Cloud Logging, trace requests with Cloud Trace, and detect abuse with Advanced API Security.",
+"keywords": [
+"api analytics",
+"cloud logging",
+"cloud trace",
+"observability",
+"traffic metrics",
+"error rate reporting",
+"security scoring"
+]
+},
+"spring-boot-devs/session-32.html": {
+"description": "Bundle API operations into products for self-service: publish OpenAPI specs to dev portals, enable key registration, attach rate plans, govern with API hub.",
+"keywords": [
+"api product",
+"developer portal",
+"rate plans",
+"monetization",
+"openapi specification",
+"self-service registration",
+"api governance"
+]
+},
+"spring-boot-devs/session-33.html": {
+"description": "Assemble a regulated Open Banking platform from DCR, consent, AISP, PISP, and CoF operations behind FAPI and mTLS, then run a go-live readiness review checklist.",
+"keywords": [
+"open banking",
+"go-live readiness",
+"fapi compliance",
+"consent management",
+"payment initiation",
+"production platform",
+"account access"
+]
+},
+"tetrate-ai-gateway/index.html": {
+"description": "Govern LLMs and AI agents at the edge with token budgets, guardrails, and multi-provider routing across 29 sessions tied to Apigee and Spring Boot concepts.",
+"keywords": [
+"ai gateway",
+"llm governance",
+"token limits",
+"multi-provider routing",
+"envoy ai gateway",
+"apigee",
+"spring boot"
+]
+},
+"tetrate-ai-gateway/session-01.html": {
+"description": "See why LLM provider calls fail at scale; every service needs a governed edge for identity, metering, budgets, guardrails, audit: why AI gateways exist.",
+"keywords": [
+"ai gateway",
+"llm calls",
+"api management",
+"token metering",
+"multi-service architecture"
+]
+},
+"tetrate-ai-gateway/session-02.html": {
+"description": "Map your Apigee knowledge onto AI gateways. Learn what transfers and the three new concepts: variable token cost, natural-language payloads, agentic state.",
+"keywords": [
+"apigee mapping",
+"api gateway",
+"token cost",
+"prompt injection",
+"agent orchestration"
+]
+},
+"tetrate-ai-gateway/session-03.html": {
+"description": "Navigate Tetrate's product ladder: open-source Envoy AI Gateway, TARS managed endpoint, Agent Router Enterprise, Agent Operations Director. Pick your on-ramp.",
+"keywords": [
+"tetrate products",
+"envoy ai gateway",
+"tars",
+"managed gateway",
+"agent router enterprise"
+]
+},
+"tetrate-ai-gateway/session-04.html": {
+"description": "Make your first governed LLM call with a one-line change: swap the base URL to the gateway endpoint. Route to two vendors by changing only the model field.",
+"keywords": [
+"base url change",
+"openai compatible",
+"managed endpoint",
+"provider portability",
+"multi-vendor"
+]
+},
+"tetrate-ai-gateway/session-05.html": {
+"description": "Self-host Envoy AI Gateway on Kubernetes with three CRDs: AIServiceBackend names the provider, BackendSecurityPolicy the credential, AIGatewayRoute the route.",
+"keywords": [
+"kubernetes",
+"crd",
+"envoy gateway",
+"declarative config",
+"self-hosted gateway",
+"aigatewayroute"
+]
+},
+"tetrate-ai-gateway/session-06.html": {
+"description": "The OpenAI-compatible API is the lingua franca. AIServiceBackend schema.name adapts OpenAI-shaped requests to Anthropic, Bedrock, and GCP behind one contract.",
+"keywords": [
+"schema adapter",
+"multi-provider",
+"openai compatible",
+"anthropic",
+"bedrock",
+"provider abstraction"
+]
+},
+"tetrate-ai-gateway/session-07.html": {
+"description": "Move provider credentials to the gateway. BackendSecurityPolicy injects API keys and AWS SigV4 upstream, so apps hold no secrets and rotation skips redeploy.",
+"keywords": [
+"credential management",
+"secret rotation",
+"backend security",
+"zero-trust app config",
+"sigv4"
+]
+},
+"tetrate-ai-gateway/session-08.html": {
+"description": "Publish a model catalog via AIGatewayRoute rules. Use virtual model names like chat-default with modelNameOverride to swap the provider, unseen by clients.",
+"keywords": [
+"model catalog",
+"model routing",
+"virtual names",
+"model override",
+"approved models",
+"operations decision"
+]
+},
+"tetrate-ai-gateway/session-09.html": {
+"description": "Configure retry and timeout with BackendTrafficPolicy, then fail over to another model vendor when the primary degrades. Switchover keeps completions flowing.",
+"keywords": [
+"failover",
+"retry policy",
+"timeout",
+"resilience",
+"cross-provider",
+"vendor fallback",
+"circuit breaker"
+]
+},
+"tetrate-ai-gateway/session-10.html": {
+"description": "Route embeddings, multimodal, and image endpoints through your AI gateway using the same governance as chat, accounting for different token metering per call type.",
+"keywords": [
+"embeddings",
+"multimodal",
+"vision",
+"token metering",
+"endpoint routing",
+"non-chat"
+]
+},
+"tetrate-ai-gateway/session-11.html": {
+"description": "Implement token-based rate limiting with distributed counters at the gateway, limiting by token cost rather than request count for true AI traffic governance.",
+"keywords": [
+"token rate limiting",
+"distributed counter",
+"usage-based limits",
+"cost control",
+"ai governance",
+"quota"
+]
+},
+"tetrate-ai-gateway/session-12.html": {
+"description": "Attribute AI token spend to users, teams, and applications at the edge, produce cost-per-team reports, and enforce budgets per cost center without per-service logic.",
+"keywords": [
+"cost attribution",
+"budgets",
+"team chargeback",
+"token accounting",
+"cost governance",
+"taod"
+]
+},
+"tetrate-ai-gateway/session-13.html": {
+"description": "Define sanctioned-model access tiers so callers reach only approved models by tier, enforcing deny-by-default entitlement without trusting client choices.",
+"keywords": [
+"model tiers",
+"sanctioned models",
+"deny-by-default",
+"entitlement control",
+"access governance",
+"api product"
+]
+},
+"tetrate-ai-gateway/session-14.html": {
+"description": "Cache deterministic AI requests at the gateway to cut token spend and latency, using response, prompt, and semantic caching for safe, idempotent completions.",
+"keywords": [
+"response caching",
+"prompt caching",
+"semantic caching",
+"cost reduction",
+"cache strategy",
+"latency"
+]
+},
+"tetrate-ai-gateway/session-15.html": {
+"description": "Authenticate every AI caller at the edge with JWT, API keys, or OIDC before governance policies apply, turning spoofable headers into verified claims for budgets.",
+"keywords": [
+"caller authentication",
+"jwt",
+"oidc",
+"api key",
+"verified identity",
+"security policy"
+]
+},
+"tetrate-ai-gateway/session-16.html": {
+"description": "Detect and block prompt-injection and jailbreak attempts at the gateway with AI guardrails before the model runs, using probabilistic pattern classification.",
+"keywords": [
+"prompt injection",
+"jailbreak defense",
+"guardrails",
+"threat protection",
+"classification",
+"defense in depth"
+]
+},
+"tetrate-ai-gateway/session-17.html": {
+"description": "Redact PII and sensitive data from prompts before egress to third-party providers and from gateway logs using pattern-based detection for cards, emails, and secrets.",
+"keywords": [
+"pii redaction",
+"data loss prevention",
+"sensitive masking",
+"egress control",
+"dlp",
+"redaction"
+]
+},
+"tetrate-ai-gateway/session-18.html": {
+"description": "Judge model completions for unsafe content at the gateway using content-safety categories, blocking or rewriting toxic, violent, or policy-violating output.",
+"keywords": [
+"output moderation",
+"content safety",
+"toxic blocking",
+"response filtering",
+"moderation",
+"safety categories"
+]
+},
+"tetrate-ai-gateway/session-19.html": {
+"description": "Secure the gateway-to-provider connection with upstream auth, TLS/mTLS, and an egress allow-list so the gateway reaches only approved LLM and tool backends.",
+"keywords": [
+"upstream security",
+"mtls",
+"egress allow-list",
+"provider auth",
+"egress control",
+"tls"
+]
+},
+"tetrate-ai-gateway/session-20.html": {
+"description": "See how agentic traffic differs from chat: one prompt loops through many model and tool calls, scaling governance from one request to a multi-step session.",
+"keywords": [
+"agents",
+"agentic loops",
+"multi-step sessions",
+"model calls",
+"tool calls",
+"governance scope",
+"session-level"
+]
+},
+"tetrate-ai-gateway/session-21.html": {
+"description": "Front Model Context Protocol tool servers with MCPRoute, routing agent tool calls through one governed endpoint instead of embedding raw clients into agent code.",
+"keywords": [
+"mcp",
+"model context protocol",
+"tool servers",
+"mcproute",
+"tool gateway",
+"agent tools"
+]
+},
+"tetrate-ai-gateway/session-22.html": {
+"description": "Aggregate multiple MCP tool servers behind one MCPRoute surface, using tool-name prefixing to multiplex calls and toolSelector to expose only safe subsets to agents.",
+"keywords": [
+"tool aggregation",
+"tool multiplexing",
+"tool routing",
+"tool prefixing",
+"server disambiguation",
+"tool catalogs"
+]
+},
+"tetrate-ai-gateway/session-23.html": {
+"description": "Gate tool calls with OAuth tokens and CEL rules, enforcing per-call authorization so agents read publicly but only privileged identities invoke write tools.",
+"keywords": [
+"tool authorization",
+"oauth",
+"jwt scopes",
+"cel conditions",
+"tool security",
+"per-invocation auth"
+]
+},
+"tetrate-ai-gateway/session-24.html": {
+"description": "Give autonomous agents a stable identity, per-agent token budgets, and step-caps so runaway loops are cut off at the gateway with 429, not unbounded cost.",
+"keywords": [
+"agent identity",
+"agent budgets",
+"autonomous workflows",
+"runaway loops",
+"agent isolation",
+"step-cap"
+]
+},
+"tetrate-ai-gateway/session-25.html": {
+"description": "Wire token-usage and latency metrics plus OpenInference traces so multi-step agent runs appear as one session-level trace with per-step cost visibility.",
+"keywords": [
+"observability",
+"token metrics",
+"openinference traces",
+"latency tracing",
+"agent runs",
+"session tracing"
+]
+},
+"tetrate-ai-gateway/session-26.html": {
+"description": "Reproduce a blocked AI request and use gateway debug to see which policy fired at which stage, then tell gateway-rejected from provider-rejected failures.",
+"keywords": [
+"debugging ai",
+"request diagnostics",
+"policy failures",
+"error diagnosis",
+"gateway debugging",
+"failure triage"
+]
+},
+"tetrate-ai-gateway/session-27.html": {
+"description": "Operate the gateway as config-as-code via Kubernetes Gateway API CRDs in git, run locally with aigw CLI, then promote manifests across clusters via GitOps.",
+"keywords": [
+"gateway api",
+"kubernetes",
+"config as code",
+"gitops",
+"aigw cli",
+"manifest promotion"
+]
+},
+"tetrate-ai-gateway/session-28.html": {
+"description": "Set gateway SLOs, read AI cost and usage in Agent Operations Director, then ship models behind stable virtual names with canary fractions and quality gates.",
+"keywords": [
+"slos",
+"production readiness",
+"model rollout",
+"canary deployments",
+"cost dashboards",
+"quality gates"
+]
+},
+"tetrate-ai-gateway/session-29.html": {
+"description": "Assemble the course into one governed multi-provider agent platform: auth, budgets, guardrails, routing, tools, observability, and operations as one whole.",
+"keywords": [
+"ai gateway platform",
+"multi-provider",
+"end-to-end governance",
+"agent platform",
+"capstone",
+"complete platform"
+]
+},
+"mastery/assessments.html": {
+"description": "Build a graduation banking API proxy capstone combining proxy design, security tiers, shared flows, CI/CD, and incident runbooks. Three assessment levels.",
+"keywords": [
+"capstone",
+"graduation",
+"assessment",
+"banking",
+"security",
+"testing"
+]
+},
+"mastery/curriculum.html": {
+"description": "Follow a 21-day instructor-led program with build days, security labs, operations training, and reviews. Progress from proxy fundamentals to production-grade.",
+"keywords": [
+"21-day",
+"curriculum",
+"training",
+"hands-on",
+"build",
+"architecture"
+]
+},
+"mastery/day.html": {
+"description": "Access individual day guides for the 21-day program with concepts, demos, hands-on labs, real-world failures, and defense exercises for core competency.",
+"keywords": [
+"day-guide",
+"self-paced",
+"labs",
+"hands-on",
+"practice",
+"concepts"
+]
+},
+"mastery/foundations.html": {
+"description": "Learn REST principles, HTTP and URI standards, and the three-tier Apigee placement model. Understand where API gateway controls belong versus backends.",
+"keywords": [
+"rest",
+"foundations",
+"three-tier",
+"http",
+"uri",
+"rfc",
+"architecture"
+]
+},
+"mastery/index.html": {
+"description": "Master Apigee X through a structured 3-week program: REST and RFC foundations, hands-on labs, policy recipes, security patterns, and banking capstone project.",
+"keywords": [
+"apigee",
+"mastery",
+"course",
+"training",
+"api",
+"platform",
+"security"
+]
+},
+"mastery/labs.html": {
+"description": "Get starter code for Apigee X setup, proxy bundles, shared flows, Maven deployment, and test scripts. Build graduation proxy with multiple security tiers.",
+"keywords": [
+"labs",
+"starter-code",
+"scaffold",
+"apigee-x",
+"deployment",
+"hands-on"
+]
+},
+"mastery/patterns.html": {
+"description": "Choose security patterns for your API portfolio: high-tier open banking, medium-tier partner APIs, low-tier public APIs. Includes decision matrix and templates.",
+"keywords": [
+"security-patterns",
+"high-security",
+"medium-security",
+"low-security",
+"decision"
+]
+},
+"mastery/policies.html": {
+"description": "Reference Apigee policy recipes: API key, OAuth, JWT, spike arrest, quota, JSON threat protection, and request shaping. Includes XML and best practices.",
+"keywords": [
+"policy",
+"cookbook",
+"oauth",
+"jwt",
+"quota",
+"threat-protection"
+]
+},
+"mastery/resources.html": {
+"description": "Access primary sources for the curriculum: REST and RFC foundations, Google Cloud Apigee documentation, GoogleCloudPlatform samples, and OpenID FAPI specs.",
+"keywords": [
+"resources",
+"sources",
+"fapi",
+"rest",
+"rfc",
+"apigee",
+"reference"
+]
+},
+"spring-boot-devs/session-10.html": {
+"description": "Learn when to use JavaScript policies vs Java callouts in Apigee X. Understand the trade-off between lightweight scripts and compiled JARs for custom gateway logic.",
+"keywords": [
+"javascript policy",
+"java callout",
+"custom logic",
+"apigee x",
+"gateway mediation",
+"spring developers",
+"sandboxed engine"
+]
+},
+"spring-boot-devs/session-11.html": {
+"description": "Master distributed rate limiting in Apigee X. Understand SpikeArrest for smoothing bursts and product-scoped Quotas for enforcing API entitlements across instances.",
+"keywords": [
+"quotas",
+"spikearrest",
+"rate limiting",
+"distributed",
+"api gateway",
+"throttling",
+"platform-scoped"
+]
+},
+"spring-boot-devs/session-12.html": {
+"description": "Choose the right data store in Apigee X: ResponseCache for TTL values, KVMs for mutable config, PropertySets for read-only bundles. Skip unnecessary databases.",
+"keywords": [
+"caching",
+"key-value map",
+"propertysets",
+"data stores",
+"apigee",
+"config management",
+"encrypted storage"
+]
+},
+"spring-boot-devs/session-13.html": {
+"description": "Secure your API edge with declarative threat protection, CORS policies, and data masking in Apigee X. Reject structural attacks before they reach backends.",
+"keywords": [
+"threat protection",
+"cors",
+"data masking",
+"api security",
+"payload validation",
+"injection prevention",
+"gateway"
+]
+},
+"spring-boot-devs/session-14.html": {
+"description": "Build the Developer → App → API Product entitlement chain in Apigee X. Learn identity-based access control without hardcoding permissions into proxy code.",
+"keywords": [
+"api products",
+"developers",
+"apps",
+"entitlements",
+"access control",
+"identity model",
+"apigee"
+]
+},
+"spring-boot-devs/session-15.html": {
+"description": "Make Apigee X an OAuth 2.0 authorization server. Issue and verify client-credentials tokens without standing up a separate Spring Authorization Server.",
+"keywords": [
+"oauth",
+"client credentials",
+"token server",
+"apigee",
+"authorization",
+"gateway",
+"token issuance"
+]
+},
+"spring-boot-devs/session-16.html": {
+"description": "Implement OAuth authorization-code flow with PKCE and signed JWT tokens in Apigee X. Secure user-consent flows with stateless, delegated token verification.",
+"keywords": [
+"oauth authorization",
+"pkce",
+"jwt",
+"apigee",
+"signed tokens",
+"user consent",
+"stateless"
+]
+},
+"spring-boot-devs/session-17.html": {
+"description": "Configure north- and south-bound TLS/mTLS in Apigee X. Secure both API gateway edges with keystores and truststores for zero-downtime certificate rotation.",
+"keywords": [
+"tls",
+"mtls",
+"mutual authentication",
+"keystores",
+"truststores",
+"certificate rotation",
+"apigee"
+]
+},
+"spring-boot-devs/session-18.html": {
+"description": "Decouple backend hostnames from proxy bundles with TargetServers in Apigee X. Enable load balancing, health checks, and automatic failover across instances.",
+"keywords": [
+"targetservers",
+"load balancing",
+"health checks",
+"failover",
+"apigee",
+"backend routing",
+"resilience"
+]
+},
+"spring-boot-devs/session-19.html": {
+"description": "Extract cross-cutting policies into reusable shared flows attached via FlowHooks in Apigee X. Build a fault taxonomy for consistent error responses.",
+"keywords": [
+"shared flows",
+"flowhooks",
+"fault handling",
+"error responses",
+"apigee",
+"cross-cutting concerns",
+"governance"
+]
+}
+}

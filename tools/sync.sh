@@ -34,4 +34,11 @@ if git clone --depth 1 https://github.com/Sreenivas-Sadhu-Prabhakara/APIGEE-Trai
 fi
 rm -rf "$tmp"
 
+# Re-apply SEO to every page (meta description, canonical, Open Graph, Twitter,
+# JSON-LD, favicon) plus regenerate sitemap.xml + robots.txt. Idempotent: it
+# replaces the managed <!-- SEO:START -->...<!-- SEO:END --> block, so running it
+# after each sync restores SEO the cp -R above would otherwise have wiped.
+echo ">> re-injecting SEO (tools/seo_inject.py)"
+python3 "$ROOT/tools/seo_inject.py"
+
 echo ">> done. Review, then: git add -A && git commit && git push"
