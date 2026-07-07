@@ -25,6 +25,7 @@ COURSES = {
  "spring-boot-devs":  {"name":"Apigee X for Spring Boot Developers","og":"og-spring.png","workload":"PT33H","level":["Intermediate"]},
  "tetrate-ai-gateway":{"name":"Tetrate AI Gateway for Apigee & Java Developers","og":"og-tetrate.png","workload":"PT29H","level":["Intermediate","Advanced"]},
  "mastery":           {"name":"Apigee Mastery Program","og":"og-mastery.png","workload":"PT21H","level":["Beginner","Intermediate","Advanced"]},
+ "xslt-course":       {"name":"XSLT for Transformation & Encryption","og":"og-xslt.png","workload":"PT8H","level":["Beginner","Intermediate"]},
 }
 HUB_OG = "og-hub.png"
 
@@ -221,7 +222,8 @@ def process(rel, favicon_href):
 
 def main():
     files = sorted(f for f in glob.glob(os.path.join(ROOT,"**/*.html"),recursive=True)
-                   if "/.git/" not in f and os.path.basename(f) != "404.html")
+                   if "/.git/" not in f and os.path.basename(f) != "404.html"
+                   and not os.path.basename(f).startswith("google"))  # skip GSC verification stubs
     rels = [os.path.relpath(f, ROOT) for f in files]
     # favicon href reused from hub index.html
     hub = open(os.path.join(ROOT,"index.html"),encoding="utf-8").read()

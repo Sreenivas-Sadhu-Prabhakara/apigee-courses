@@ -1,4 +1,154 @@
 {
+"xslt-course/index.html": {
+"description": "Learn to transform XML with XSLT (1.0 to 3.0), then get an honest look at what XSLT can and cannot do for encryption, with runnable examples.",
+"keywords": [
+"xslt",
+"xslt tutorial",
+"xml transformation",
+"xpath",
+"xslt 3.0",
+"xml encryption"
+]
+},
+"xslt-course/l01-what-is-xslt.html": {
+"description": "A stylesheet turns one tree into another. Meet the XSLT processor, the source tree and the result tree, and how a transformation actually runs.",
+"keywords": [
+"what is xslt",
+"xslt processor",
+"xslt tutorial",
+"source tree",
+"result tree"
+]
+},
+"xslt-course/l02-first-stylesheet.html": {
+"description": "Write, run and understand a complete XSLT transform from XML to HTML in about a dozen lines.",
+"keywords": [
+"xslt stylesheet",
+"xml to html",
+"xsl:template",
+"value-of",
+"xsltproc"
+]
+},
+"xslt-course/l03-xpath.html": {
+"description": "XPath is how XSLT points at nodes: paths, predicates, axes and functions like count, sum and last().",
+"keywords": [
+"xpath",
+"xpath predicates",
+"xpath functions",
+"xpath axes",
+"select nodes"
+]
+},
+"xslt-course/l04-templates.html": {
+"description": "Template rules and apply-templates, the heart of XSLT. Describe what to do with each node and let the processor walk the tree.",
+"keywords": [
+"xsl:template",
+"apply-templates",
+"template rules",
+"push style",
+"xslt modes"
+]
+},
+"xslt-course/l05-shape-data.html": {
+"description": "Reshape data with xsl:sort, xsl:choose and attribute value templates: reorder, branch and compute attributes at run time.",
+"keywords": [
+"xsl:sort",
+"xsl:choose",
+"attribute value template",
+"avt",
+"xslt sorting"
+]
+},
+"xslt-course/l06-keys-grouping.html": {
+"description": "Fast lookups with xsl:key, and turning a flat list into groups: the XSLT 1.0 Muenchian method and 2.0 for-each-group.",
+"keywords": [
+"xsl:key",
+"muenchian grouping",
+"for-each-group",
+"xslt grouping",
+"deduplicate xml"
+]
+},
+"xslt-course/l07-recursion.html": {
+"description": "Named templates, parameters and recursion in XSLT: reusable subroutines and the recursion pattern used to build ciphers.",
+"keywords": [
+"named template",
+"xslt recursion",
+"call-template",
+"xsl:param",
+"xslt functions"
+]
+},
+"xslt-course/l08-versions.html": {
+"description": "What XSLT 2.0 and 3.0 add: sequences, functions, regex, maps and JSON, and when the upgrade from 1.0 is worth it.",
+"keywords": [
+"xslt 2.0",
+"xslt 3.0",
+"xslt versions",
+"saxon",
+"xml to json"
+]
+},
+"xslt-course/l09-honest-framing.html": {
+"description": "XSLT is a transformer, not a cipher engine. The three honest paths to encryption with XSLT, and the security rules that keep you safe.",
+"keywords": [
+"xslt encryption",
+"xml security",
+"encoding vs encryption",
+"cryptography basics"
+]
+},
+"xslt-course/l10-teaching-ciphers.html": {
+"description": "Build Caesar, Base64 and XOR by hand in pure XSLT to learn recursion and byte math: great teachers, and deliberately not secure.",
+"keywords": [
+"caesar cipher xslt",
+"base64 xslt",
+"xor cipher",
+"rot13",
+"teaching cipher"
+]
+},
+"xslt-course/l11-xml-encryption.html": {
+"description": "Encrypt only the sensitive elements of an XML document with the W3C XML Encryption standard: XSLT marks what, a library does the crypto.",
+"keywords": [
+"xml encryption",
+"w3c xmlenc",
+"encrypteddata",
+"aes-gcm",
+"element level encryption"
+]
+},
+"xslt-course/l12-extension-crypto.html": {
+"description": "Call AES, HMAC and hashing from inside an XSLT transform via extension functions, the pattern used in Java, .NET and Python stacks.",
+"keywords": [
+"xslt extension functions",
+"saxon extension",
+"lxml",
+"aes",
+"hmac"
+]
+},
+"xslt-course/capstone.html": {
+"description": "A Secure Invoice Exchange: transform an order feed to a partner invoice, encrypt the sensitive fields with AES-GCM, then decrypt and render.",
+"keywords": [
+"xslt pipeline",
+"xml encryption",
+"aes-gcm",
+"invoice transformation",
+"secure exchange"
+]
+},
+"xslt-course/reference.html": {
+"description": "XSLT and XPath cheat-sheet: core instructions, XPath functions, run commands for xsltproc and Saxon, and a crypto decision guide.",
+"keywords": [
+"xslt cheat sheet",
+"xpath functions",
+"xsltproc",
+"saxon",
+"xslt reference"
+]
+},
 "index.html": {
 "description": "Ship secure API platforms with Apigee X. Four hands-on training tracks cover open banking, FAPI, Spring Boot bridge",
 "keywords": [

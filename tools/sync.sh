@@ -11,6 +11,7 @@ MAP=(
   "apigeex-training:fapi-30-day"
   "apigeex-for-spring-devs:spring-boot-devs"
   "tetrate-ai-gateway-for-apigee-devs:tetrate-ai-gateway"
+  "xslt-course:xslt-course"
 )
 
 for pair in "${MAP[@]}"; do
