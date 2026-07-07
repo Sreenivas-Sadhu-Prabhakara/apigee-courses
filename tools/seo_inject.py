@@ -20,10 +20,10 @@ TODAY  = _dt.date.today().isoformat()
 DESC_FILE = os.path.join(_HERE, "seo_descriptions.json")
 
 COURSES = {
- "fapi-30-day":       {"name":"30-Day Apigee X: Open Banking & FAPI","og":"og-fapi.png","workload":"PT30H"},
- "spring-boot-devs":  {"name":"Apigee X for Spring Boot Developers","og":"og-spring.png","workload":"PT33H"},
- "tetrate-ai-gateway":{"name":"Tetrate AI Gateway for Apigee & Java Developers","og":"og-tetrate.png","workload":"PT29H"},
- "mastery":           {"name":"Apigee Mastery Program","og":"og-mastery.png","workload":"PT21H"},
+ "fapi-30-day":       {"name":"30-Day Apigee X: Open Banking & FAPI","og":"og-fapi.png","workload":"PT30H","level":["Intermediate","Advanced"]},
+ "spring-boot-devs":  {"name":"Apigee X for Spring Boot Developers","og":"og-spring.png","workload":"PT33H","level":["Intermediate"]},
+ "tetrate-ai-gateway":{"name":"Tetrate AI Gateway for Apigee & Java Developers","og":"og-tetrate.png","workload":"PT29H","level":["Intermediate","Advanced"]},
+ "mastery":           {"name":"Apigee Mastery Program","og":"og-mastery.png","workload":"PT21H","level":["Beginner","Intermediate","Advanced"]},
 }
 HUB_OG = "og-hub.png"
 
@@ -57,8 +57,10 @@ def crumb(items):
     return {"@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":i+1,"name":n,"item":u} for i,(n,u) in enumerate(items)]}
 
-ORG_INLINE = {"@type":"Organization","name":SITE,"url":BASE+"/"}
-PERSON     = {"@type":"Person","name":AUTHOR}
+GITHUB     = "https://github.com/Sreenivas-Sadhu-Prabhakara"
+ORG_INLINE = {"@type":"Organization","name":SITE,"url":BASE+"/","sameAs":[GITHUB],
+              "logo":{"@type":"ImageObject","url":BASE+"/assets/og/logo.png","width":1200,"height":1200}}
+PERSON     = {"@type":"Person","name":AUTHOR,"url":GITHUB}
 
 def build_jsonld(kind, course, rel, url, text_title, desc, keywords):
     if kind == "hub":
@@ -76,6 +78,7 @@ def build_jsonld(kind, course, rel, url, text_title, desc, keywords):
         graph=[
           {"@type":"Course","@id":cu+"#course","name":c["name"],"description":desc,"url":cu,
            "provider":ORG_INLINE,"author":PERSON,"inLanguage":"en","isAccessibleForFree":True,
+           "dateModified":TODAY,"educationLevel":c["level"],
            "about":keywords,
            "offers":{"@type":"Offer","category":"Free","price":"0","priceCurrency":"USD",
                      "availability":"https://schema.org/InStock"},
@@ -88,7 +91,7 @@ def build_jsonld(kind, course, rel, url, text_title, desc, keywords):
         leaf = text_title.split(" · ")[0].strip()
         graph=[
           {"@type":"LearningResource","@id":url+"#lesson","name":text_title,"description":desc,"url":url,
-           "inLanguage":"en","isAccessibleForFree":True,"learningResourceType":"lesson",
+           "inLanguage":"en","isAccessibleForFree":True,"dateModified":TODAY,"learningResourceType":"lesson",
            "teaches":keywords,"author":PERSON,"provider":ORG_INLINE,
            "isPartOf":{"@type":"Course","@id":cu+"#course","name":c["name"],"url":cu}},
           crumb([("Home",BASE+"/"),(c["name"],cu),(leaf,url)]),
