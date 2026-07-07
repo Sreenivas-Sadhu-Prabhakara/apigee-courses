@@ -814,7 +814,7 @@
     <div class="wrap hero__inner">
       <span class="eyebrow">
         <span class="dot" aria-hidden="true"></span>
-        <span>4 courses</span> <span aria-hidden="true">·</span> <b>Apigee&nbsp;X</b> <span aria-hidden="true">·</span> hands-on
+        <span>5 courses</span> <span aria-hidden="true">·</span> <b>hands-on</b> <span aria-hidden="true">·</span> for engineers
       </span>
 
       <h1 id="hero-title">
@@ -881,7 +881,7 @@
   <section class="wrap results" aria-label="Courses">
     <div class="results__bar">
       <p class="results__title" role="status" aria-live="polite" id="resultsTitle">
-        Showing <b>4</b> of <b>4</b> courses
+        Showing <b>5</b> of <b>5</b> courses
       </p>
       <p class="results__hint" aria-hidden="true">↵ open · cards link to /folder</p>
     </div>
@@ -964,6 +964,16 @@
       level: 'All levels',
       topics: ['Foundations', 'Patterns', 'Labs'],
       desc: 'A structured mastery track — foundations through patterns, policies and assessment.'
+    },
+    {
+      folder: 'enterprise-integration-patterns',
+      url: 'https://sreenivas-sadhu-prabhakara.github.io/enterprise-integration-patterns/',
+      external: true,
+      title: 'Enterprise Integration Patterns, Hands-On',
+      meta: '21 lessons',
+      level: 'Beginner → Intermediate',
+      topics: ['Apache Camel', 'Spring Boot', 'EIP', 'Messaging'],
+      desc: 'One runnable, tested module per Enterprise Integration Pattern — on the Red Hat build of Apache Camel for Spring Boot.'
     }
   ];
 
@@ -1091,19 +1101,21 @@
       return '<span class="tag' + (isMatch ? ' is-match' : '') + '">' + inner + '</span>';
     }).join('');
 
-    var href = escapeHTML(course.folder) + '/index.html';
+    var href = course.url ? escapeHTML(course.url) : escapeHTML(course.folder) + '/index.html';
+    var linkAttrs = course.external ? ' target="_blank" rel="noopener"' : '';
+    var fileLabel = escapeHTML(course.folder) + (course.external ? ' ↗' : '/');
 
     return '' +
       '<article class="card">' +
         '<div class="card__head">' +
           '<span class="card__file" title="' + href + '">' +
-            svg('file') + '<span>' + escapeHTML(course.folder) + '/</span>' +
+            svg('file') + '<span>' + fileLabel + '</span>' +
           '</span>' +
           '<span class="badge">' + escapeHTML(course.meta) + '</span>' +
         '</div>' +
         '<div class="card__body">' +
           '<p class="card__level"><span class="pip" aria-hidden="true">▸</span>' + escapeHTML(course.level) + '</p>' +
-          '<h3><a href="' + href + '">' + titleH + '</a></h3>' +
+          '<h3><a href="' + href + '"' + linkAttrs + '>' + titleH + '</a></h3>' +
           '<p class="desc">' + descH + '</p>' +
           '<div class="tags" aria-label="Topics">' + tags + '</div>' +
           '<span class="cta">Open course ' + svg('arrow') + '</span>' +
